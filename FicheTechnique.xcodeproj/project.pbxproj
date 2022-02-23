@@ -35,6 +35,13 @@
 		6FBD2C1A27C4C6D3006EF045 /* ListIngrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD2C1927C4C6D3006EF045 /* ListIngrView.swift */; };
 		6FBD2C1D27C4C78F006EF045 /* IngrsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD2C1C27C4C78F006EF045 /* IngrsVM.swift */; };
 		6FBD2C1F27C4CD8A006EF045 /* IngrUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD2C1E27C4CD8A006EF045 /* IngrUIView.swift */; };
+		6FBD2C2127C5191C006EF045 /* IngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD2C2027C5191C006EF045 /* IngredientViewModel.swift */; };
+		6FBD2C2427C51DE9006EF045 /* IngredientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD2C2327C51DE9006EF045 /* IngredientError.swift */; };
+		6FBD2C2627C51F2A006EF045 /* IngredientIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD2C2527C51F2A006EF045 /* IngredientIntent.swift */; };
+		6FBD2C2827C621C6006EF045 /* CardModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD2C2727C621C6006EF045 /* CardModifier.swift */; };
+		6FBD2C2A27C624DA006EF045 /* FichesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD2C2927C624DA006EF045 /* FichesVM.swift */; };
+		6FBD2C2C27C63A60006EF045 /* ListeFicheView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD2C2B27C63A60006EF045 /* ListeFicheView.swift */; };
+		6FBD2C2E27C63EDE006EF045 /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD2C2D27C63EDE006EF045 /* TestViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +71,13 @@
 		6FBD2C1927C4C6D3006EF045 /* ListIngrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListIngrView.swift; sourceTree = "<group>"; };
 		6FBD2C1C27C4C78F006EF045 /* IngrsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngrsVM.swift; sourceTree = "<group>"; };
 		6FBD2C1E27C4CD8A006EF045 /* IngrUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngrUIView.swift; sourceTree = "<group>"; };
+		6FBD2C2027C5191C006EF045 /* IngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewModel.swift; sourceTree = "<group>"; };
+		6FBD2C2327C51DE9006EF045 /* IngredientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientError.swift; sourceTree = "<group>"; };
+		6FBD2C2527C51F2A006EF045 /* IngredientIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientIntent.swift; sourceTree = "<group>"; };
+		6FBD2C2727C621C6006EF045 /* CardModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModifier.swift; sourceTree = "<group>"; };
+		6FBD2C2927C624DA006EF045 /* FichesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FichesVM.swift; sourceTree = "<group>"; };
+		6FBD2C2B27C63A60006EF045 /* ListeFicheView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeFicheView.swift; sourceTree = "<group>"; };
+		6FBD2C2D27C63EDE006EF045 /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				6FBD2BCB27BEDB67006EF045 /* GoogleService-Info.plist */,
+				6FBD2C2227C51DBF006EF045 /* Intent */,
 				6FBD2C1B27C4C766006EF045 /* ViewModel */,
 				6FBD2C0227C134BA006EF045 /* Models */,
 				6FBD2BDB27C11871006EF045 /* Views */,
@@ -155,6 +170,7 @@
 				6FBD2C0B27C1469E006EF045 /* AddRecipeView.swift */,
 				6FBD2C1327C2341C006EF045 /* AddIngrSheetView.swift */,
 				6FBD2C1927C4C6D3006EF045 /* ListIngrView.swift */,
+				6FBD2C2B27C63A60006EF045 /* ListeFicheView.swift */,
 				6FBD2C1527C23A3E006EF045 /* CheckBoxView.swift */,
 				6FBD2C1E27C4CD8A006EF045 /* IngrUIView.swift */,
 				6FBD2C1727C24502006EF045 /* ModifyIngrSheetView.swift */,
@@ -170,6 +186,7 @@
 				6FBD2BFE27C121DD006EF045 /* StockView.swift */,
 				6FBD2C0027C12254006EF045 /* CostCalculation.swift */,
 				6FBD2BFC27C11EBB006EF045 /* TabBar.swift */,
+				6FBD2C2727C621C6006EF045 /* CardModifier.swift */,
 				6FBD2BDC27C118A3006EF045 /* HomeView.swift */,
 				6FBD2C0D27C16306006EF045 /* StepsView.swift */,
 			);
@@ -180,8 +197,20 @@
 			isa = PBXGroup;
 			children = (
 				6FBD2C1C27C4C78F006EF045 /* IngrsVM.swift */,
+				6FBD2C2927C624DA006EF045 /* FichesVM.swift */,
+				6FBD2C2027C5191C006EF045 /* IngredientViewModel.swift */,
+				6FBD2C2D27C63EDE006EF045 /* TestViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6FBD2C2227C51DBF006EF045 /* Intent */ = {
+			isa = PBXGroup;
+			children = (
+				6FBD2C2327C51DE9006EF045 /* IngredientError.swift */,
+				6FBD2C2527C51F2A006EF045 /* IngredientIntent.swift */,
+			);
+			path = Intent;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,13 +294,18 @@
 			files = (
 				6FBD2C1D27C4C78F006EF045 /* IngrsVM.swift in Sources */,
 				6FBD2BC027BECADA006EF045 /* ContentView.swift in Sources */,
+				6FBD2C2C27C63A60006EF045 /* ListeFicheView.swift in Sources */,
 				6FBD2C0127C12254006EF045 /* CostCalculation.swift in Sources */,
 				6FBD2C0C27C1469E006EF045 /* AddRecipeView.swift in Sources */,
+				6FBD2C2A27C624DA006EF045 /* FichesVM.swift in Sources */,
 				6FBD2C0827C14059006EF045 /* ModelIngredFiche.swift in Sources */,
 				6FBD2C1A27C4C6D3006EF045 /* ListIngrView.swift in Sources */,
 				6FBD2C1F27C4CD8A006EF045 /* IngrUIView.swift in Sources */,
 				6FBD2C1427C2341C006EF045 /* AddIngrSheetView.swift in Sources */,
+				6FBD2C2127C5191C006EF045 /* IngredientViewModel.swift in Sources */,
+				6FBD2C2E27C63EDE006EF045 /* TestViewModel.swift in Sources */,
 				6FBD2C1227C220AA006EF045 /* Ingredient.swift in Sources */,
+				6FBD2C2627C51F2A006EF045 /* IngredientIntent.swift in Sources */,
 				6FBD2BFF27C121DD006EF045 /* StockView.swift in Sources */,
 				6FBD2BBE27BECADA006EF045 /* FicheTechniqueApp.swift in Sources */,
 				6FBD2BDA27C0F211006EF045 /* SignInView.swift in Sources */,
@@ -281,6 +315,8 @@
 				6FBD2BDD27C118A3006EF045 /* HomeView.swift in Sources */,
 				6FBD2C1627C23A3E006EF045 /* CheckBoxView.swift in Sources */,
 				6FBD2C0E27C16306006EF045 /* StepsView.swift in Sources */,
+				6FBD2C2827C621C6006EF045 /* CardModifier.swift in Sources */,
+				6FBD2C2427C51DE9006EF045 /* IngredientError.swift in Sources */,
 				6FBD2C0427C13584006EF045 /* Fiche.swift in Sources */,
 				6FBD2BD827BEFA29006EF045 /* SignInViewModel.swift in Sources */,
 				6FBD2BFD27C11EBB006EF045 /* TabBar.swift in Sources */,

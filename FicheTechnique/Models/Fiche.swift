@@ -14,7 +14,7 @@ enum Categorie: String, CaseIterable{
     case entree = "Entree"
 }
 
-struct Fiche: Identifiable{
+class Fiche: Identifiable, ObservableObject{
     //var id: ObjectIdentifier
     
     let id = UUID()
@@ -25,5 +25,15 @@ struct Fiche: Identifiable{
     let etape: [Etape]
     let materielSpes: String
     let materielDress: String
+    
+    init( intitule: String, responsable:String, nbrCouverts: Int, categorie: String, etape: [Etape], materielSpes: String, materielDress: String) {
+        self.intitule = intitule
+        self.responsable = responsable
+        self.nbrCouverts = nbrCouverts
+        self.categorie = categorie
+        self.etape = etape
+        self.materielSpes = materielSpes
+        self.materielDress = materielDress
+    }
     
 }

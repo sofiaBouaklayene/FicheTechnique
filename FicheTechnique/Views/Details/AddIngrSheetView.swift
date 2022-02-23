@@ -17,10 +17,14 @@ struct AddIngrSheetView: View{
         return formatter
     }()
     let col = [GridItem](repeating: .init(.flexible()), count: 2)
-    @State var ingr = Ingredient(idIngredient: 123, nom: "tomate", categorie: "fruit", PU: 1, unite: "kg", qtteStock: 5, allergene: true, CatAllergene: "cru")
+    @State var ingr = Ingredient( nom: "tomate", categorie: "fruit", PU: 1, unite: "kg", qtteStock: 5, allergene: true, CatAllergene: "cru")
     @State private var checked = true
     @State private var selectedCategory: CatgrIngr = CatgrIngr.fruit
     @State private var selectedUnite: UniteIngr = UniteIngr.kg
+    
+    @ObservedObject var ingrsVM : IngrsVM
+    //@ObservedObject var ingredient : Ingredient
+    //@ObservedObject var testVM : TestViewModel
     
     var body: some View{
         NavigationView{
@@ -58,6 +62,8 @@ struct AddIngrSheetView: View{
                     }
                 }
                 Button(action :{
+                    handleDoneTapped()
+            
                   
                 }, label:{
                     Text("Ajouter au stock").bold().frame(width: 300, height: 40, alignment: . center).background(Color.orange.opacity(0.35)).cornerRadius(8).foregroundColor(Color.white).padding()
@@ -67,9 +73,14 @@ struct AddIngrSheetView: View{
            
         }
 }
+    func handleDoneTapped(){
+        //testVM.save()
+    }
 }
 struct AddIngrSheetView_Previews: PreviewProvider {
+    /*static var ingredient : Ingredient = Ingredient(idIngredient: 125, nom: "truc", categorie: "fruit", PU: 2, unite: "kg", qtteStock: 5, allergene: true, CatAllergene: "crustaces")*/
+    static var ingrsVM : IngrsVM = IngrsVM()
     static var previews: some View {
-        AddIngrSheetView()
+        AddIngrSheetView(ingrsVM: ingrsVM)
     }
 }

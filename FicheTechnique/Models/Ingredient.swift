@@ -6,9 +6,28 @@
 //
 
 import Foundation
-class Ingredient : ObservableObject{
-    public var idIngredient: Int
-    public var nom: String
+import SwiftUI
+
+protocol IngredientObserver{
+    func change(name: String)
+}
+
+class Ingredient : ObservableObject, Identifiable{
+    
+    public var observer : IngredientObserver?
+    var id: String = UUID().uuidString
+    //public var idIngredient: Int
+    public var nom: String/*{
+        didSet{
+            let newname = nom.trimmingCharacters(in: whitespacesAndNewlines)
+            if newname.count<1{
+                self.nom = oldValue
+            }
+            else{
+                self.observer?.change(name: self.nom)
+            }
+        }
+    }*/
     public var categorie: String
     public var PU: Int
     public var unite: String
@@ -17,8 +36,8 @@ class Ingredient : ObservableObject{
     public var allergene : Bool
     public var CatAllergene: String
     
-    init(idIngredient: Int, nom: String, categorie:String, PU: Int, unite: String, qtteStock: Int, allergene: Bool, CatAllergene: String) {
-        self.idIngredient = idIngredient
+    init(nom: String, categorie:String, PU: Int, unite: String, qtteStock: Int, allergene: Bool, CatAllergene: String) {
+        //self.idIngredient = idIngredient
         self.nom = nom
         self.categorie = categorie
         self.PU = PU

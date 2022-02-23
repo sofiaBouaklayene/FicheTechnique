@@ -7,18 +7,21 @@
 
 import SwiftUI
 import Firebase
+//import FirebaseFirestore
 
 @main
 struct FicheTechniqueApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     /*init(){
+        print("Coucou")
         FirebaseApp.configure()
+        
     }*/
-    var ingrsVM : IngrsVM = IngrsVM()
+    //var ingredient : Ingredient
     var body: some Scene {
         WindowGroup {
             let signInVM = SignInViewModel()
-            ContentView(ingrsVM: ingrsVM).environmentObject(signInVM)
+            ContentView().environmentObject(signInVM)
         }
     }
 }
