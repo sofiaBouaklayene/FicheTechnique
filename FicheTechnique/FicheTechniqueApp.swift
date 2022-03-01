@@ -13,7 +13,7 @@ import Firebase
 struct FicheTechniqueApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     /*init(){
-        print("Coucou")
+        print("Gros soucis firebase :(")
         FirebaseApp.configure()
         
     }*/

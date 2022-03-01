@@ -12,7 +12,18 @@ protocol IngredientObserver{
     func change(name: String)
 }
 
-class Ingredient : ObservableObject, Identifiable{
+class Ingredient : ObservableObject, Identifiable, Encodable{
+    
+    enum CodingKeys : String, CodingKey{
+        case nom
+        case categorie
+        case PU
+        case unite
+        case qtteStock
+        
+        case allergene
+        case CatAllergene
+    }
     
     public var observer : IngredientObserver?
     var id: String = UUID().uuidString

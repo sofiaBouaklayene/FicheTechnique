@@ -38,7 +38,6 @@ struct ListIngrView_Previews: PreviewProvider {
     static var ingredient : Ingredient = Ingredient(nom: "truc", categorie: "fruit", PU: 2, unite: "kg", qtteStock: 5, allergene: true, CatAllergene: "crustaces")
     
     static var ingrsVM: IngrsVM = IngrsVM()
-    static var testVM: TestViewModel = TestViewModel()
     static var previews: some View {
         ListIngrView(ingredient: ingredient, ingrsVM: ingrsVM)
     }

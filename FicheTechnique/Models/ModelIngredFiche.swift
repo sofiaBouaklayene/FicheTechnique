@@ -6,8 +6,17 @@
 //
 
 import Foundation
-struct ModelIngredFiche{
+class ModelIngredFiche : Identifiable{
+    
+    let id = UUID()
     let nomingredient: String
     let quantite: Int
+    
+    
+    init(nomingredient : String, quantite: Int){
+        self.nomingredient = nomingredient
+        self.quantite = quantite
+       
+    }
     
 }

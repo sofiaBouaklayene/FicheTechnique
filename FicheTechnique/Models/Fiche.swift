@@ -22,16 +22,16 @@ class Fiche: Identifiable, ObservableObject{
     let responsable: String
     let nbrCouverts: Int
     let categorie: Categorie.RawValue
-    let etape: [Etape]
+    let etapes: [Etape]
     let materielSpes: String
     let materielDress: String
     
-    init( intitule: String, responsable:String, nbrCouverts: Int, categorie: String, etape: [Etape], materielSpes: String, materielDress: String) {
+    init( intitule: String, responsable:String, nbrCouverts: Int, categorie: String, etapes: [Etape], materielSpes: String, materielDress: String) {
         self.intitule = intitule
         self.responsable = responsable
         self.nbrCouverts = nbrCouverts
         self.categorie = categorie
-        self.etape = etape
+        self.etapes = etapes
         self.materielSpes = materielSpes
         self.materielDress = materielDress
     }

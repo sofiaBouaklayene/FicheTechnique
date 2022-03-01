@@ -18,6 +18,70 @@
             endingLineNumber = "14"
             landmarkName = "FicheTechniqueApp"
             landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "A9AEC71A-7FC6-4CA9-9962-F70F362809CA - 7381db56bdba7a85"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FicheTechnique.FicheTechniqueApp.appDelegate.getter : FicheTechnique.AppDelegate"
+                  moduleName = "FicheTechnique"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/m1/Desktop/FicheTechnique/FicheTechnique/FicheTechniqueApp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "204">
+               </Location>
+               <Location
+                  uuid = "A9AEC71A-7FC6-4CA9-9962-F70F362809CA - b0afd303f0f1de0b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FicheTechnique.FicheTechniqueApp.init() -&gt; FicheTechnique.FicheTechniqueApp"
+                  moduleName = "FicheTechnique"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/m1/Desktop/FicheTechnique/FicheTechnique/FicheTechniqueApp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9AA8FF57-36D4-4DC7-BA49-2E824E1C5AE3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FicheTechnique/ViewModel/IngrsVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "getAllIngredients()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "38EB9F45-86E8-48F0-B76D-FE7D41D25075"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FicheTechnique/Views/Main/StockView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

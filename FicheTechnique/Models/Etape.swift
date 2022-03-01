@@ -6,14 +6,23 @@
 //
 
 import Foundation
-struct Etape: Identifiable{
+class Etape: Identifiable,  ObservableObject{
     //var id: ObjectIdentifier
     
     let id = UUID()
-    let titreEtape: String
+    var titreEtape: String
     let NomDenree: String
     let Ingredients: [ModelIngredFiche]
-    let description: String
+    var description: String
     let temps: Int
+    
+    init( titreEtape: String, NomDenree:String, Ingredients: [ModelIngredFiche], description: String, temps: Int) {
+        self.titreEtape = titreEtape
+        self.NomDenree = NomDenree
+        self.Ingredients = Ingredients
+        self.description = description
+        self.temps = temps
+       
+    }
     
 }

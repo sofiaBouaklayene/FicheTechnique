@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 import Foundation
+import Firebase
+import FirebaseFirestore
 
 struct AddIngrSheetView: View{
     
@@ -17,14 +19,30 @@ struct AddIngrSheetView: View{
         return formatter
     }()
     let col = [GridItem](repeating: .init(.flexible()), count: 2)
-    @State var ingr = Ingredient( nom: "tomate", categorie: "fruit", PU: 1, unite: "kg", qtteStock: 5, allergene: true, CatAllergene: "cru")
+    
+    //@State var ingr = Ingredient( nom: "tomate", categorie: "fruit", PU: 1, unite: "kg", qtteStock: 5, allergene: true, CatAllergene: "cru")
+    
+    
+    @State private var nom: String = ""
+    @State private var PU: Int = 0
+    @State private var qtteStock: Int = 0
+    @State private var allergene: Bool = false
+    @State private var CatAllergene: String = ""
+    //@StateObject var viewModel = IngredientViewModel(ingredient: <#Ingredient#>)
+    
+    
+    
     @State private var checked = true
     @State private var selectedCategory: CatgrIngr = CatgrIngr.fruit
     @State private var selectedUnite: UniteIngr = UniteIngr.kg
     
     @ObservedObject var ingrsVM : IngrsVM
+    //@ObservedObject var vmIngredient = IngredientViewModel
     //@ObservedObject var ingredient : Ingredient
     //@ObservedObject var testVM : TestViewModel
+    
+    @State var prixUnitaire : Int = 0
+    
     
     var body: some View{
         NavigationView{
@@ -33,7 +51,7 @@ struct AddIngrSheetView: View{
                 LazyVGrid(columns: col, alignment: .leading){
                     
                     Text("Ingredient").padding()
-                    TextField("Ingredient", text : $ingr.nom).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5);
+                    TextField("Ingredient", text : $nom).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5);
                     Text("Catégorie").padding()
                     Picker("Catégorie", selection: $selectedCategory){
                         ForEach(CatgrIngr.allCases, id: \.self){
@@ -45,9 +63,9 @@ struct AddIngrSheetView: View{
                 }
                 LazyVGrid(columns: col, alignment: .leading){
                     Text("Prix unitaire").padding()
-                    TextField("Prix unitaire", value: $ingr.PU, formatter:formatter).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5) ;
+                    TextField("Prix unitaire", value: $prixUnitaire, formatter:formatter).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5) ;
                     Text("Quantité").padding()
-                    TextField("Quantite", value: $ingr.qtteStock, formatter: formatter).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5)
+                    TextField("Quantite", value: $qtteStock, formatter: formatter).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5)
                     Text("Unité").padding()
                     Picker("Catégorie", selection: $selectedUnite){
                         ForEach(UniteIngr.allCases, id: \.self){
@@ -62,7 +80,15 @@ struct AddIngrSheetView: View{
                     }
                 }
                 Button(action :{
-                    handleDoneTapped()
+                    let db = Firestore.firestore()
+                    let ingred : Ingredient = Ingredient(nom: "toto", categorie: "toto", PU: prixUnitaire, unite: "toto", qtteStock: 0, allergene: true, CatAllergene: "toto")
+                    do {
+                          let _ = try db.collection("ingredients").addDocument(from: ingred )
+                        }
+                        catch {
+                          print(error)
+                        }
+                    saveIngredient()
             
                   
                 }, label:{
@@ -73,14 +99,23 @@ struct AddIngrSheetView: View{
            
         }
 }
-    func handleDoneTapped(){
-        //testVM.save()
-    }
+    /*func handleAjoutTapped(){
+        self.vmIng.handleAjoutTapped()
+       
+    }*/
 }
 struct AddIngrSheetView_Previews: PreviewProvider {
     /*static var ingredient : Ingredient = Ingredient(idIngredient: 125, nom: "truc", categorie: "fruit", PU: 2, unite: "kg", qtteStock: 5, allergene: true, CatAllergene: "crustaces")*/
     static var ingrsVM : IngrsVM = IngrsVM()
+    
     static var previews: some View {
         AddIngrSheetView(ingrsVM: ingrsVM)
+    }
+}
+
+extension AddIngrSheetView{
+    private func saveIngredient(){
+        let ingred = Ingredient(nom: nom, categorie: selectedCategory.rawValue, PU: PU, unite: selectedUnite.rawValue, qtteStock: qtteStock, allergene: allergene, CatAllergene: CatAllergene)
+        ingrsVM.addIngredient(ingredient: ingred)
     }
 }

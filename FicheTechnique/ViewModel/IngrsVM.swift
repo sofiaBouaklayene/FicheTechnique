@@ -14,10 +14,11 @@ import Firebase
 class IngrsVM : ObservableObject, Subscriber{
     @Published var ingredients = [Ingredient]()
     //@Published var liveIngrs = [Ingredient]()
-    
+    //@Published var ingredient: Ingredient
+    //@Published var cancellables = Set<AnyCancellable>()
+    //@Published var modified = false
     //@ObservedObject var ingrVM : IngredientViewModel
     init(){
-        //getIngrs()
         
     }
     /*func getIngrs(){
@@ -35,15 +36,42 @@ class IngrsVM : ObservableObject, Subscriber{
         
     }*/
     
+    // Mark: - Fonctions de base
+      
     func deleteIngr(indexSet: IndexSet){
         ingredients.remove(atOffsets: indexSet)
     }
     func moveIngr(from: IndexSet, to: Int){
         ingredients.move(fromOffsets: from, toOffset : to)
     }
-    func addIngr(ingredient : Ingredient){
-        
+    func addIngredient(ingredient: Ingredient){
+        ingredients.append(ingredient)
     }
+    
+    
+    
+    
+    
+    /*private var db = Firestore.firestore()
+    func addIngredient(_ ingredient : Ingredient){
+        do{
+            let _ = try db.collection("ingredients").addDocument(from: ingredient)
+        }
+        catch{
+            print(error)
+        }
+    }
+    
+    // Mark: - Model Management
+    
+    func save(){
+        addIngredient(self.ingredient)
+    }
+    // Mark: -UI handlers
+    
+    func handleAjoutTapped(){
+        self.save()
+    }*/
     typealias Input = IngredientListState
     typealias Failure = Never
     func receive(subscription : Subscription){

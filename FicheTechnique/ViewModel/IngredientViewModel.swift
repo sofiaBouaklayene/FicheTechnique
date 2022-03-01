@@ -21,6 +21,8 @@ class IngredientViewModel : ObservableObject, IngredientObserver, Subscriber {
     @Published var unite: String
     @Published var qtteStock: Int
     @Published var error : IngredientError = .noError
+    // test
+   
     
     
     init(ingredient : Ingredient){
@@ -32,6 +34,8 @@ class IngredientViewModel : ObservableObject, IngredientObserver, Subscriber {
         self.unite = ingredient.unite
         self.qtteStock = ingredient.qtteStock
         ingredient.observer = self
+        
+        
     }
     // MARK: -
     // MARK: TrackObserver
@@ -71,7 +75,16 @@ class IngredientViewModel : ObservableObject, IngredientObserver, Subscriber {
         }
         return .none // on arrête de traiter cette demande et on attend un nouveau send
     }
-   
+    /*func addIngredient(){
+        let db = Firestore.firestore()
+        let ingred : Ingredient = Ingredient(nom: "toto", categorie: "toto", PU: prixUnitaire, unite: "toto", qtteStock: 0, allergene: true, CatAllergene: "toto")
+        do {
+              let _ = try db.collection("ingredients").addDocument(from: ingred )
+            }
+            catch {
+              print(error)
+            }
+    }*/
    
     
     

@@ -21,7 +21,7 @@ struct TabBar: View{
                 Label("Accueil", systemImage: "house")
             
             }
-            NewRecipeView().tabItem{
+            NewRecipeView(fichesVM: fichesVM).tabItem{
                 Label("Créer une fiche", systemImage: "plus")
             }
             CostCalculationView().tabItem{

@@ -46,16 +46,15 @@ struct StockView: View{
                         showingAddIngrSheet.toggle()
                     }, label:{
                         Text("Ajouter").bold().frame(width: 150, height: 40, alignment: . center).background(Color.orange.opacity(0.35)).cornerRadius(8).foregroundColor(Color.white).padding(5)
-                    }).sheet(isPresented: $showingAddIngrSheet){
+                    })
+                    .sheet(isPresented: $showingAddIngrSheet){
                         AddIngrSheetView(ingrsVM: ingrsVM)
                     }
                     
                 
-               
+            }
                 
             }
-        
-    }
 }
 
 struct StockView_Previews: PreviewProvider {
