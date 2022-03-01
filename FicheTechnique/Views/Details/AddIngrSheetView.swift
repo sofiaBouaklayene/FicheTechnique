@@ -28,7 +28,9 @@ struct AddIngrSheetView: View{
     @State private var qtteStock: Int = 0
     @State private var allergene: Bool = false
     @State private var CatAllergene: String = ""
-    //@StateObject var viewModel = IngredientViewModel(ingredient: <#Ingredient#>)
+    
+    
+    @StateObject var ingredViewModel = IngredientViewModel(ingredient: Ingredient(nom: "", categorie: "", PU: 0, unite: "", qtteStock: 0, allergene: true, CatAllergene: ""))
     
     
     
@@ -38,7 +40,7 @@ struct AddIngrSheetView: View{
     
     @ObservedObject var ingrsVM : IngrsVM
     //@ObservedObject var vmIngredient = IngredientViewModel
-    //@ObservedObject var ingredient : Ingredient
+    
     //@ObservedObject var testVM : TestViewModel
     
     @State var prixUnitaire : Int = 0
@@ -51,7 +53,7 @@ struct AddIngrSheetView: View{
                 LazyVGrid(columns: col, alignment: .leading){
                     
                     Text("Ingredient").padding()
-                    TextField("Ingredient", text : $nom).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5);
+                    TextField("Ingredient", text : $ingredViewModel.nom).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5);
                     Text("Catégorie").padding()
                     Picker("Catégorie", selection: $selectedCategory){
                         ForEach(CatgrIngr.allCases, id: \.self){
@@ -63,9 +65,9 @@ struct AddIngrSheetView: View{
                 }
                 LazyVGrid(columns: col, alignment: .leading){
                     Text("Prix unitaire").padding()
-                    TextField("Prix unitaire", value: $prixUnitaire, formatter:formatter).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5) ;
+                    TextField("Prix unitaire", value: $ingredViewModel.PU, formatter:formatter).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5) ;
                     Text("Quantité").padding()
-                    TextField("Quantite", value: $qtteStock, formatter: formatter).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5)
+                    TextField("Quantite", value: $ingredViewModel.qtteStock, formatter: formatter).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5)
                     Text("Unité").padding()
                     Picker("Catégorie", selection: $selectedUnite){
                         ForEach(UniteIngr.allCases, id: \.self){
@@ -80,15 +82,7 @@ struct AddIngrSheetView: View{
                     }
                 }
                 Button(action :{
-                    let db = Firestore.firestore()
-                    let ingred : Ingredient = Ingredient(nom: "toto", categorie: "toto", PU: prixUnitaire, unite: "toto", qtteStock: 0, allergene: true, CatAllergene: "toto")
-                    do {
-                          let _ = try db.collection("ingredients").addDocument(from: ingred )
-                        }
-                        catch {
-                          print(error)
-                        }
-                    saveIngredient()
+                    self.handleAjoutTapped()
             
                   
                 }, label:{
@@ -99,10 +93,10 @@ struct AddIngrSheetView: View{
            
         }
 }
-    /*func handleAjoutTapped(){
-        self.vmIng.handleAjoutTapped()
+    func handleAjoutTapped(){
+        self.ingredViewModel.handleAjoutTapped()
        
-    }*/
+    }
 }
 struct AddIngrSheetView_Previews: PreviewProvider {
     /*static var ingredient : Ingredient = Ingredient(idIngredient: 125, nom: "truc", categorie: "fruit", PU: 2, unite: "kg", qtteStock: 5, allergene: true, CatAllergene: "crustaces")*/

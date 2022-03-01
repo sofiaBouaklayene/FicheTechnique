@@ -20,6 +20,9 @@ class IngredientViewModel : ObservableObject, IngredientObserver, Subscriber {
     @Published var PU: Int
     @Published var unite: String
     @Published var qtteStock: Int
+    
+    @Published var allergene : Bool
+    @Published var CatAllergene : String
     @Published var error : IngredientError = .noError
     // test
    
@@ -33,6 +36,8 @@ class IngredientViewModel : ObservableObject, IngredientObserver, Subscriber {
         self.PU = ingredient.PU
         self.unite = ingredient.unite
         self.qtteStock = ingredient.qtteStock
+        self.allergene = ingredient.allergene
+        self.CatAllergene = ingredient.CatAllergene
         ingredient.observer = self
         
         
@@ -75,16 +80,36 @@ class IngredientViewModel : ObservableObject, IngredientObserver, Subscriber {
         }
         return .none // on arrête de traiter cette demande et on attend un nouveau send
     }
-    /*func addIngredient(){
+    func addIngredient(){
         let db = Firestore.firestore()
-        let ingred : Ingredient = Ingredient(nom: "toto", categorie: "toto", PU: prixUnitaire, unite: "toto", qtteStock: 0, allergene: true, CatAllergene: "toto")
+        let ingred : Ingredient = Ingredient(nom: nom, categorie: categorie , PU: PU, unite:unite, qtteStock: qtteStock, allergene: allergene, CatAllergene: CatAllergene)
         do {
               let _ = try db.collection("ingredients").addDocument(from: ingred )
             }
             catch {
               print(error)
             }
-    }*/
+    }
+    
+    func save() {
+        addIngredient()
+      }
+    
+    func handleAjoutTapped() {
+        self.save()
+      }
+    func getCategorie(model : CatgrIngr) -> String{
+        if model == CatgrIngr.fruit{
+            return "Fruit"
+        }
+        if model == CatgrIngr.poisson{
+            return "Poisson"
+        }
+        else {
+            return "Viande"
+        }
+        
+    }
    
     
     
