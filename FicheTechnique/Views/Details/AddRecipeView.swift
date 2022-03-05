@@ -10,7 +10,6 @@ import SwiftUI
 
 struct AddRecipeView: View{
     @State private var intitule: String = ""
-    @State private var selectedCategory: Categorie = Categorie.plat
     @State private var responsable: String = ""
     @State private var nbCouvert: Int = 0
     @State private var materielSpe: String = ""
@@ -121,11 +120,11 @@ struct AddRecipeView_Previews: PreviewProvider {
     }
 }
  */
-
+/*
 extension AddRecipeView{
     private func saveFiche(){
         let fiche = Fiche(intitule: intitule, responsable: responsable, nbCouverts: nbCouvert, categorie: selectedCategory.rawValue, etapes: [] , materielSpes: materielSpe, materielDress: materielDre)
         fichesVM.addFiche(fiche: fiche)
     }
 }
-
+*/

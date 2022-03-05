@@ -39,11 +39,13 @@ struct CreateStep: View{
     @ObservedObject var ficheViewModel : FicheViewModel
     
     
+    //test
+    @ObservedObject var etape : Etape = Etape(titreEtape: "", NomDenree: "", Ingredients: [("", 0)], description: "", temps: 0)
+    
+    @State var listEtape = Etape(titreEtape: "", NomDenree: "", Ingredients: [("", 0)], description: "", temps: 0)
     
     
     
-    
-    @State var selectedIngredient : String = ""
     
     
     var body: some View{
@@ -112,6 +114,10 @@ struct CreateStep: View{
             }, label:{
                 Text("Valider etape").bold().frame(width: 200, height: 40, alignment: . center).background(Color.orange.opacity(0.35)).cornerRadius(8).foregroundColor(Color.white).padding()
             })
+            Text("Liste des ingrédients")
+            //Text("ingr:\(etape.Ingredients)")
+            
+            
             
             
            

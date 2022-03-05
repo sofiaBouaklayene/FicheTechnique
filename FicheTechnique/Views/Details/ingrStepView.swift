@@ -49,29 +49,31 @@ struct ingrStepView: View{
     var body: some View{
         NavigationView{
             VStack{
-                Text("Ingrédients").font(.title)
-                    .toolbar {
-                        ToolbarItem(placement: .bottomBar) {
-                            Button("Add") {
-                                
-                                print("Pressed")
-                            }
-                        }
-                    }
+               
                 LazyVGrid(columns: col, alignment: .leading){
                     
                     Text("Ingredient").padding()
-                    /*
-                    Picker("Ingredient", selection: $etapeVM.Ingredients){
+                    
+                    Picker("Ingredient", selection: $etapeVM.Ingredients[0].0){
                         ForEach(ingrsVM.ingredients, id: \.id){
-                            ingred in Text(ingred.nom)
+                            ingred in Text(ingred.nom).tag(ingred.nom)
                         }.padding(5)
                         
                        
-                    }*/
+                    }
+                    Text("You selected: \(etapeVM.Ingredients[0].0)")
                     Text("Quantité").padding()
-                    TextField("Quantite", value: self.$etapeVM.Ingredients, formatter: formatter).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5)
-                    
+                    TextField("Quantite", value: self.$etapeVM.Ingredients[0].1, formatter: formatter).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5)
+                    //Text("La quantité est \(etapeVM.Ingredients[0].1)")
+                    Text("Ingrédients").font(.title)
+                        .toolbar {
+                            ToolbarItem(placement: .bottomBar) {
+                                Button("Add") {
+                                    etapeVM.Ingredients.append((etapeVM.Ingredients[0].0, etapeVM.Ingredients[0].1))
+                                    print("Pressed")
+                                }
+                            }
+                        }
                    
                     
                     

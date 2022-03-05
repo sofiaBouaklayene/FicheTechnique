@@ -20,7 +20,7 @@ class FicheViewModel : ObservableObject {
     @Published var intitule: String
     @Published var responsable: String
     @Published var nbCouverts: Int
-    @Published var  categorie: Categorie.RawValue
+    @Published var  categorie: String
     @Published var  etapes: [String]
     @Published var materielSpes: String
     @Published var materielDress: String

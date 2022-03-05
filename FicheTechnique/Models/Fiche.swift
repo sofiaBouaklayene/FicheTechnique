@@ -8,12 +8,6 @@
 import Foundation
 import SwiftUI
 
-enum Categorie: String, CaseIterable, Encodable{
-    case dessert = "Dessert"
-    case plat = "Plat"
-    case entree = "Entree"
-}
-
 class Fiche: Identifiable, ObservableObject{
     
   /*enum CodingKeys: String, CodingKey{
@@ -33,7 +27,7 @@ class Fiche: Identifiable, ObservableObject{
     let intitule: String
     let responsable: String
     let nbCouverts: Int
-    let categorie: Categorie.RawValue
+    let categorie: String
     let etapes: [String]
     let materielSpes: String
     let materielDress: String
