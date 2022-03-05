@@ -11,8 +11,11 @@ import SwiftUI
 struct TabBar: View{
     @ObservedObject var ingrsVM : IngrsVM
     @ObservedObject var fichesVM : FichesVM
+    @ObservedObject var etapesVM : EtapesVM
     //@ObservedObject var ingredient : Ingredient
     //@State var fiche : Fiche
+   
+    
     
     
     var body: some View{
@@ -21,7 +24,7 @@ struct TabBar: View{
                 Label("Accueil", systemImage: "house")
             
             }
-            NewRecipeView(fichesVM: fichesVM).tabItem{
+            NewRecipeView(fichesVM: fichesVM, ingrdVM: ingrsVM, etapesVM: etapesVM).tabItem{
                 Label("Créer une fiche", systemImage: "plus")
             }
             CostCalculationView().tabItem{
@@ -33,6 +36,7 @@ struct TabBar: View{
         }
     }
 }
+/*
 struct TabBar_Previews: PreviewProvider {
     static var ingrsVM : IngrsVM = IngrsVM()
     static var fichesVM : FichesVM = FichesVM()
@@ -42,3 +46,4 @@ struct TabBar_Previews: PreviewProvider {
         TabBar(ingrsVM : ingrsVM, fichesVM : fichesVM)
     }
 }
+*/

@@ -98,18 +98,7 @@ class IngredientViewModel : ObservableObject, IngredientObserver, Subscriber {
     func handleAjoutTapped() {
         self.save()
       }
-    func getCategorie(model : CatgrIngr) -> String{
-        if model == CatgrIngr.fruit{
-            return "Fruit"
-        }
-        if model == CatgrIngr.poisson{
-            return "Poisson"
-        }
-        else {
-            return "Viande"
-        }
-        
-    }
+    
    
     
     

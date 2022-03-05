@@ -26,19 +26,11 @@ class Ingredient : ObservableObject, Identifiable, Encodable{
     }
     
     public var observer : IngredientObserver?
+    
+    
     var id: String = UUID().uuidString
     //public var idIngredient: Int
-    public var nom: String/*{
-        didSet{
-            let newname = nom.trimmingCharacters(in: whitespacesAndNewlines)
-            if newname.count<1{
-                self.nom = oldValue
-            }
-            else{
-                self.observer?.change(name: self.nom)
-            }
-        }
-    }*/
+    public var nom: String
     public var categorie: String
     public var PU: Int
     public var unite: String

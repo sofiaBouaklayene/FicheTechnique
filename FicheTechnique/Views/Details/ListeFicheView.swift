@@ -13,6 +13,8 @@ struct ListFicheView: View{
     @ObservedObject var fiche : Fiche
     @State private var search : String = ""
     
+    
+    
     var body: some View{
         NavigationLink(destination:FicheUIView(fichesVM: fichesVM, fiche: fiche)){
         HStack(alignment: .center) {
@@ -42,7 +44,7 @@ struct ListFicheView: View{
     }
 }
 
-
+/*
 struct ListFicheView_Previews: PreviewProvider {
     static var fichesVM : FichesVM = FichesVM()
     static var fiche : Fiche =  Fiche(intitule: "pates", responsable: "clement", nbrCouverts: 4, categorie: "plat", etapes: [Etape(titreEtape: "1 ere ", NomDenree: "truc", Ingredients: [ModelIngredFiche(nomingredient: "tomate", quantite: 2)], description: "truc", temps: 3)], materielSpes: "couteau", materielDress: "fourchette")
@@ -50,3 +52,4 @@ struct ListFicheView_Previews: PreviewProvider {
         ListFicheView(fichesVM : fichesVM, fiche: fiche)
     }
 }
+*/

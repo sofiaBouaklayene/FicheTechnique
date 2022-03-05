@@ -10,6 +10,7 @@ import Foundation
 struct HomeView: View{
     //var image: String
     @ObservedObject var fichesVM : FichesVM
+  
     //@ObservedObject var fiche : Fiche
     @State private var search : String = ""
     
@@ -33,13 +34,14 @@ struct HomeView: View{
             }
             .navigationTitle("Fiches techniques")
             .searchable(text: $search)
+        
             
         }
         
     }
 }
 
-
+/*
 struct HomeView_Previews: PreviewProvider {
     static var fichesVM : FichesVM = FichesVM()
     static var fiche : Fiche =  Fiche(intitule: "pates", responsable: "clement", nbrCouverts: 4, categorie: "plat", etapes: [Etape(titreEtape: "1 ere ", NomDenree: "truc", Ingredients: [ModelIngredFiche(nomingredient: "tomate", quantite: 2)], description: "truc", temps: 3)], materielSpes: "couteau", materielDress: "fourchette")
@@ -47,3 +49,4 @@ struct HomeView_Previews: PreviewProvider {
         HomeView(fichesVM : fichesVM)
     }
 }
+*/

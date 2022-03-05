@@ -26,9 +26,11 @@ struct ListIngrView: View{
                     //Text(ingredient.unite)
                     //Text("\($ingredient.quantite)")
                     //Text("\($ingredient.allergene)")
+                    
                 
                 }
             }
+           
         }
     }
 }

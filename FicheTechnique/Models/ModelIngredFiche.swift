@@ -6,11 +6,19 @@
 //
 
 import Foundation
+import SwiftUI
+
 class ModelIngredFiche : Identifiable{
     
+    /*enum CodingKeys: String, CodingKey{
+        case nomIngredient
+        case quantite
+       
+    }*/
+    
     let id = UUID()
-    let nomingredient: String
-    let quantite: Int
+    var nomingredient: String
+    var quantite: Int
     
     
     init(nomingredient : String, quantite: Int){
@@ -18,5 +26,6 @@ class ModelIngredFiche : Identifiable{
         self.quantite = quantite
        
     }
+    
     
 }

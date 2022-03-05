@@ -8,32 +8,46 @@
 import Foundation
 import SwiftUI
 
-enum Categorie: String, CaseIterable{
+enum Categorie: String, CaseIterable, Encodable{
     case dessert = "Dessert"
     case plat = "Plat"
     case entree = "Entree"
 }
 
 class Fiche: Identifiable, ObservableObject{
-    //var id: ObjectIdentifier
     
-    let id = UUID()
+  /*enum CodingKeys: String, CodingKey{
+        case intitule
+        case responsable
+        case nbrCouverts
+        case categorie
+        case etapes
+        
+        case materielSpes
+        case materielDress
+    }*/
+  
+    
+    
+    var id =  UUID()
     let intitule: String
     let responsable: String
-    let nbrCouverts: Int
+    let nbCouverts: Int
     let categorie: Categorie.RawValue
-    let etapes: [Etape]
+    let etapes: [String]
     let materielSpes: String
     let materielDress: String
     
-    init( intitule: String, responsable:String, nbrCouverts: Int, categorie: String, etapes: [Etape], materielSpes: String, materielDress: String) {
+    init( intitule: String, responsable:String, nbCouverts: Int, categorie: String, etapes: [String], materielSpes: String, materielDress: String) {
         self.intitule = intitule
         self.responsable = responsable
-        self.nbrCouverts = nbrCouverts
+        self.nbCouverts = nbCouverts
         self.categorie = categorie
         self.etapes = etapes
         self.materielSpes = materielSpes
         self.materielDress = materielDress
     }
+   
     
 }
+

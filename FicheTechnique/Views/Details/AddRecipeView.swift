@@ -16,9 +16,17 @@ struct AddRecipeView: View{
     @State private var materielSpe: String = ""
     @State private var materielDre: String = ""
     
-    @State private var etape: Etape = Etape(titreEtape: "", NomDenree: "", Ingredients: [ModelIngredFiche(nomingredient: "", quantite: 0)], description: "", temps: 0)
+    @State private var showingAddStep = false
+    
+    @State private var etape: Etape = Etape(titreEtape: "", NomDenree: "", Ingredients: [("",0)], description: "", temps: 0)
+    
     
     @ObservedObject var fichesVM : FichesVM
+    @ObservedObject var ingrdVM : IngrsVM
+    @ObservedObject var etapeVM : EtapesVM
+    //@ObservedObject var ficheVM: FicheViewModel
+    
+    @StateObject var ficheViewModel = FicheViewModel(fiche: Fiche(intitule: "", responsable: "", nbCouverts: 0, categorie: "", etapes: [], materielSpes: "", materielDress: ""))
     
     let formatter : NumberFormatter = {
         let formatter = NumberFormatter()
@@ -27,13 +35,13 @@ struct AddRecipeView: View{
     }()
     
     @Environment(\.dismiss) var dismiss
-    @State private var showingAddStep = false
+   
     
     var body: some View{
         NavigationView{
             Form{
                 Section(header: Text("Intitulé:")){
-                    TextField("Nom de la fiche", text: $intitule )
+                    TextField("Nom de la fiche", text: $ficheViewModel.intitule )
                 }
                 Section(header: Text("Categorie")){
                     Picker("Catégorie", selection: $selectedCategory){
@@ -44,23 +52,25 @@ struct AddRecipeView: View{
                     .pickerStyle(.menu)
                 }
                 Section(header: Text("Responsable:")){
-                    TextField("Responsable de la fiche", text: $responsable )
+                    TextField("Responsable de la fiche", text: $ficheViewModel.responsable )
                 }
                 
                 Section(header: Text("Nombre de couvert")){
-                    TextField("nb de couvert", value: $nbCouvert, formatter: formatter )
+                    TextField("nb de couvert", value: $ficheViewModel.nbCouverts, formatter: formatter )
                 }
               
                 
                 Section(header: Text("Materiel spécifique:")){
-                    TextEditor( text: $materielSpe )
+                    TextEditor( text: $ficheViewModel.materielSpes )
                 }
                 Section(header: Text("Materiel de dréssage")){
-                    TextEditor( text: $materielDre )
+                    TextEditor( text: $ficheViewModel.materielDress )
                 }
-                Section(header: Text("etape")){
+                /*Section(header: Text("etape")){
                     TextEditor( text: $etape.titreEtape )
-                }
+                }*/
+                
+                
                 
                 
             }.toolbar(content: {
@@ -78,9 +88,9 @@ struct AddRecipeView: View{
                     }, label:{
                         Label("Ajouter", systemImage: "checkmark")
                     }).sheet(isPresented: $showingAddStep){
-                        AddStepView()
+                        CreateStep(ingrdVM: ingrdVM, etapeVM: etapeVM, ficheViewModel : ficheViewModel)
                     }
-                    .disabled(intitule.isEmpty)
+                    .disabled(ficheViewModel.intitule.isEmpty)
                     
                 }
                 
@@ -92,23 +102,30 @@ struct AddRecipeView: View{
         }.navigationViewStyle(.stack)
         
         Button(action :{
-            saveFiche()
+            self.handleAjoutTapped()
           
         }, label:{
             Text("Enregistrer la fiche").bold().frame(width: 300, height: 40, alignment: . center).background(Color.orange.opacity(0.35)).cornerRadius(8).foregroundColor(Color.white).padding()
         })
     }
+    func handleAjoutTapped(){
+        self.ficheViewModel.handleAjoutTapped()
+       
+    }
 }
+/*
 struct AddRecipeView_Previews: PreviewProvider {
     static var fichesVM : FichesVM = FichesVM()
     static var previews: some View {
         AddRecipeView(fichesVM: fichesVM)
     }
 }
+ */
 
 extension AddRecipeView{
     private func saveFiche(){
-        let fiche = Fiche(intitule: intitule, responsable: responsable, nbrCouverts: nbCouvert, categorie: selectedCategory.rawValue, etapes: [etape], materielSpes: materielSpe, materielDress: materielDre)
+        let fiche = Fiche(intitule: intitule, responsable: responsable, nbCouverts: nbCouvert, categorie: selectedCategory.rawValue, etapes: [] , materielSpes: materielSpe, materielDress: materielDre)
         fichesVM.addFiche(fiche: fiche)
     }
 }
+

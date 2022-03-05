@@ -39,12 +39,12 @@ struct FicheUIView: View{
             HStack(alignment: .center, spacing: 12){
                 HStack(alignment: .center, spacing: 2){
                     Image(systemName: "person.2")
-                    Text("Couverts: \(fiche.nbrCouverts)")
+                    Text("Couverts: \(fiche.nbCouverts)")
                     
                 }
                 HStack(alignment: .center, spacing: 2){
                     Image(systemName: "clock")
-                    Text("Durée: \(fiche.nbrCouverts)")
+                    Text("Durée: \(fiche.nbCouverts)")
                     
                 }
                 HStack(alignment: .center, spacing: 2){
@@ -55,30 +55,32 @@ struct FicheUIView: View{
                 
             }.font(.footnote)
                 .foregroundColor(Color.gray)
-            VStack{
+            
+            /*VStack{
                 Text("Technique de réalisation").italic() .padding(10).font(.system(.title, design : .serif))
                 
                 ForEach(fiche.etapes, id:\.id){ etape in VStack{
                     Text("Etape").bold().padding()
                     Text(etape.titreEtape)
-                    Text(etape.description)
+                    //Text(etape.description)
                     Text("Ingrédients").bold().padding()
-                    ForEach(etape.Ingredients, id: \.id){ ingred in VStack{
+                    /*ForEach(etape.Ingredients, id: \.id){ ingred in VStack{
                         Text(ingred.nomingredient)
                         //Text(ingred.quantite)
                         
                     }
                     
-                }
+                }*/
                     
                 }
                     
             }
-            }
+            }*/
         }
     }
 
     }
+/*
 struct FicheUIView_Previews: PreviewProvider {
     static var fiche : Fiche =  Fiche(intitule: "pates", responsable: "clement", nbrCouverts: 4, categorie: "plat", etapes: [Etape(titreEtape: "1 ere ", NomDenree: "truc", Ingredients: [ModelIngredFiche(nomingredient: "tomate", quantite: 2)], description: "truc", temps: 3)], materielSpes: "couteau", materielDress: "fourchette")
     static var fichesVM : FichesVM = FichesVM()
@@ -86,4 +88,4 @@ struct FicheUIView_Previews: PreviewProvider {
         FicheUIView(fichesVM : fichesVM, fiche: fiche)
     }
 }
-
+*/

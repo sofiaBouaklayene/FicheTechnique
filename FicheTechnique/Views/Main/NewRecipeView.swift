@@ -11,6 +11,10 @@ import SwiftUI
 struct NewRecipeView: View{
     @State private var showAddRecipe = false
     @ObservedObject var fichesVM : FichesVM
+    @ObservedObject var ingrdVM : IngrsVM
+    @ObservedObject var etapesVM : EtapesVM
+   
+    
     var body: some View{
         NavigationView{
             Button("Ajouter votre fiche technique"){
@@ -19,13 +23,15 @@ struct NewRecipeView: View{
             
         }.navigationViewStyle(.stack)
             .sheet(isPresented: $showAddRecipe){
-                AddRecipeView(fichesVM: fichesVM)
+                AddRecipeView(fichesVM: fichesVM, ingrdVM: ingrdVM, etapeVM: etapesVM)
             }
     }
 }
+/*
 struct NewRecipeView_Previews: PreviewProvider {
     static var fichesVM : FichesVM = FichesVM()
     static var previews: some View {
         NewRecipeView(fichesVM: fichesVM)
     }
 }
+*/

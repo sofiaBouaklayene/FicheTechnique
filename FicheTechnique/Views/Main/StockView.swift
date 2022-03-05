@@ -7,6 +7,7 @@
 import Foundation
 import SwiftUI
 import FirebaseFirestore
+import Firebase
 
 struct StockView: View{
     @ObservedObject var ingrsVM = IngrsVM()
@@ -27,13 +28,22 @@ struct StockView: View{
                                         ListIngrView(ingredient : ingredient, ingrsVM : ingrsVM)
                                    
                                     }
-                                    .onDelete(perform : ingrsVM.deleteIngr)
+                    
+                                .onDelete(perform : {
+                                    indexSet in
+                                    let ingredID = indexSet.map{
+                                        ingrsVM.ingredients[$0].id
+                                    }
+                                    self.ingrsVM.deleteIngred(with: ingredID[0])
+                                    
+                                })
                                         .onMove(perform : ingrsVM.moveIngr)
                             
                                 
                                     
                     
                 }
+                   
                                 .navigationTitle("Gestion de stock")
                                 .searchable(text: $search)
                                     
@@ -50,11 +60,13 @@ struct StockView: View{
                     .sheet(isPresented: $showingAddIngrSheet){
                         AddIngrSheetView(ingrsVM: ingrsVM)
                     }
-                    
+                
                 
             }
                 
             }
+   
+    
 }
 
 struct StockView_Previews: PreviewProvider {

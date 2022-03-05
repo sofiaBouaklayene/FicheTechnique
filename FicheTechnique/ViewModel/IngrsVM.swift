@@ -13,13 +13,17 @@ import Firebase
 
 class IngrsVM : ObservableObject, Subscriber{
     @Published var ingredients = [Ingredient]()
+    @Published var categories = [CatIngr]()
     //@Published var liveIngrs = [Ingredient]()
     //@Published var ingredient: Ingredient
     //@Published var cancellables = Set<AnyCancellable>()
     //@Published var modified = false
     //@ObservedObject var ingrVM : IngredientViewModel
     init(){
+        getAllCategorys()
+        getAllIngredients()
         
+    
     }
     /*func getIngrs(){
         let newIngrs : [Ingredient] = [
@@ -41,6 +45,10 @@ class IngrsVM : ObservableObject, Subscriber{
     func deleteIngr(indexSet: IndexSet){
         ingredients.remove(atOffsets: indexSet)
     }
+    
+    
+    
+    
     func moveIngr(from: IndexSet, to: Int){
         ingredients.move(fromOffsets: from, toOffset : to)
     }
@@ -72,6 +80,8 @@ class IngrsVM : ObservableObject, Subscriber{
     func handleAjoutTapped(){
         self.save()
     }*/
+    
+    
     typealias Input = IngredientListState
     typealias Failure = Never
     func receive(subscription : Subscription){
@@ -115,6 +125,86 @@ class IngrsVM : ObservableObject, Subscriber{
                 }
             }
         }
+    /*func getAllCategories(){
+            //var listeIng : [Ingredient] = []
+            let db = Firestore.firestore()
+            db.collection("CategorieIngredient").getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        print("\(document.documentID) => \(document.data())")
+                        let d = document.data()
+                        let type = d["type"] as? String ?? ""
+                        let categorie = CatIngr(type: type)
+                        print(categorie)
+                       
+                    }
+                    
+                }
+            }
+          
+        }*/
+    func getAllCategorys(){
+        let db = Firestore.firestore()
+        db.collection("CategorieIngredient").addSnapshotListener { (querySnapshot, error) in
+                    guard let documents = querySnapshot?.documents else {
+                        print("No documents")
+                        return
+                    }
+            self.categories = documents.map {(queryDocumentSnapshot) -> CatIngr in
+                    print("\(queryDocumentSnapshot.documentID) => \(queryDocumentSnapshot.data())")
+                    let d = queryDocumentSnapshot.data()
+                    let type = d["type"] as? String ?? ""
+                    //listeIng.append(Ingredient( nom: nom, categorie: "fruit", PU: 1, unite: "kg", qtteStock: 5, allergene: true, CatAllergene: "crustace"))
+                return CatIngr(type: type)
+                    
+                    
+                }
+            }
+        
+    }
+    
+    func deleteData(toDoDeleteIngr : Ingredient){
+        let db = Firestore.firestore()
+        db.collection("ingredients").document(toDoDeleteIngr.id).delete{
+            error in
+            if error == nil{
+                DispatchQueue.main.async{
+                    self.ingredients.removeAll{
+                        ingred in
+                        return ingred.id == toDoDeleteIngr.id
+                        
+                    }
+                }
+                
+            }
+        }
+    }
+    func deleteIngred(with id: String){
+        let db = Firestore.firestore()
+        /*db.collection("ingredients").whereField("id", isEqualTo: id).getDocuments{(snap, err) in
+        if err != nil {
+            print("error")
+            return
+        }
+        for i in snap!.documents{
+            DispatchQueue.main.async{
+                i.reference.delete()
+            }
+        
+        }
+        }*/
+        db.collection("ingredients").document(id).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+                print(id)
+            }
+        }
+                                                                                
+    }
       
     }
 

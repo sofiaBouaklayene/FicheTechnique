@@ -35,15 +35,19 @@ struct AddIngrSheetView: View{
     
     
     @State private var checked = true
-    @State private var selectedCategory: CatgrIngr = CatgrIngr.fruit
+  
+    
     @State private var selectedUnite: UniteIngr = UniteIngr.kg
     
     @ObservedObject var ingrsVM : IngrsVM
     //@ObservedObject var vmIngredient = IngredientViewModel
+    @State  private var selectedCategory: String = "coucouu"
     
     //@ObservedObject var testVM : TestViewModel
     
     @State var prixUnitaire : Int = 0
+    var colors = ["Red", "Green", "Blue", "Tartan"]
+        @State private var selectedColor = "Red"
     
     
     var body: some View{
@@ -54,22 +58,34 @@ struct AddIngrSheetView: View{
                     
                     Text("Ingredient").padding()
                     TextField("Ingredient", text : $ingredViewModel.nom).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5);
+                    
                     Text("Catégorie").padding()
-                    Picker("Catégorie", selection: $selectedCategory){
-                        ForEach(CatgrIngr.allCases, id: \.self){
-                            categorieIngr in Text(categorieIngr.rawValue).tag(categorieIngr)
+                    Picker("Catégorie", selection: $ingredViewModel.categorie){
+                        Text("")
+                        ForEach(ingrsVM.categories, id: \.self){
+                            categorieIngr in Text(categorieIngr.type).tag(categorieIngr.type)
                         }.padding(5)
+                      
+                        
+                       
                     }
                     .pickerStyle(.menu)
+                    Text("you selected \(ingredViewModel.categorie)")
+                
+                   
+                    
+                    
+                    
                     
                 }
+                
                 LazyVGrid(columns: col, alignment: .leading){
                     Text("Prix unitaire").padding()
                     TextField("Prix unitaire", value: $ingredViewModel.PU, formatter:formatter).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5) ;
                     Text("Quantité").padding()
                     TextField("Quantite", value: $ingredViewModel.qtteStock, formatter: formatter).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5)
                     Text("Unité").padding()
-                    Picker("Catégorie", selection: $selectedUnite){
+                    Picker("Catégorie", selection: $ingredViewModel.unite){
                         ForEach(UniteIngr.allCases, id: \.self){
                             uniteIngr in Text(uniteIngr.rawValue).tag(uniteIngr)
                         }.padding(5)
@@ -98,6 +114,7 @@ struct AddIngrSheetView: View{
        
     }
 }
+/*
 struct AddIngrSheetView_Previews: PreviewProvider {
     /*static var ingredient : Ingredient = Ingredient(idIngredient: 125, nom: "truc", categorie: "fruit", PU: 2, unite: "kg", qtteStock: 5, allergene: true, CatAllergene: "crustaces")*/
     static var ingrsVM : IngrsVM = IngrsVM()
@@ -106,10 +123,10 @@ struct AddIngrSheetView_Previews: PreviewProvider {
         AddIngrSheetView(ingrsVM: ingrsVM)
     }
 }
-
+*/
 extension AddIngrSheetView{
     private func saveIngredient(){
-        let ingred = Ingredient(nom: nom, categorie: selectedCategory.rawValue, PU: PU, unite: selectedUnite.rawValue, qtteStock: qtteStock, allergene: allergene, CatAllergene: CatAllergene)
+        let ingred = Ingredient(nom: nom, categorie: selectedCategory, PU: PU, unite: selectedUnite.rawValue, qtteStock: qtteStock, allergene: allergene, CatAllergene: CatAllergene)
         ingrsVM.addIngredient(ingredient: ingred)
     }
 }

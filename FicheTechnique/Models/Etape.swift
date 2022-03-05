@@ -6,17 +6,27 @@
 //
 
 import Foundation
+import SwiftUI
+
 class Etape: Identifiable,  ObservableObject{
-    //var id: ObjectIdentifier
     
-    let id = UUID()
+    /*enum CodingKeys: String, CodingKey{
+
+        case titreEtape
+        case NomDenree
+        case Ingredients
+        case description
+        case temps
+     */
+    
+    var id = UUID()
     var titreEtape: String
-    let NomDenree: String
-    let Ingredients: [ModelIngredFiche]
+    var NomDenree: String
+    var Ingredients: [(nom: String, quantite: Int)]
     var description: String
-    let temps: Int
+    var temps: Int
     
-    init( titreEtape: String, NomDenree:String, Ingredients: [ModelIngredFiche], description: String, temps: Int) {
+    init(titreEtape: String, NomDenree:String, Ingredients: [(nom: String, quantite: Int)], description: String, temps: Int) {
         self.titreEtape = titreEtape
         self.NomDenree = NomDenree
         self.Ingredients = Ingredients
