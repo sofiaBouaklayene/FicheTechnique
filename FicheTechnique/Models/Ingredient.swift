@@ -51,19 +51,4 @@ class Ingredient : ObservableObject, Identifiable, Encodable{
         self.CatAllergene = CatAllergene
     }
 }
-enum CatgrIngr: String, CaseIterable{
-    case poisson = "Poisson"
-    case viande = "Viande"
-    case cremerie = "Crèmerie"
-    case epicerie = "Epicerie"
-    case crustacé = "Crustaces"
-    case fruit = "Fruit"
-}
-enum UniteIngr: String, CaseIterable{
-case kg = "Kg"
-case l = "L"
-case botte = "Botte"
-case unite = "U"
-case piece = "P"
-    
-}
+

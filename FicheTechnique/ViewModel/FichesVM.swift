@@ -13,10 +13,12 @@ import FirebaseFirestore
 
 class FichesVM : ObservableObject{
     @Published var fiches : [Fiche] = []
+    @Published var categories = [CategorieFiche]()
     init(){
         //getFiches()
         //fetchData()
         getAllFiches()
+        getAllFicheCat()
        
     }
     /*func getFiches(){
@@ -99,7 +101,7 @@ class FichesVM : ObservableObject{
                 let categorie = d["categorie"] as? String ?? ""
                 let responsable = d["responsable"] as? String ?? ""
                 let nbCouverts = d["nbCouverts"] as? Int ?? 0
-                let etapes = d["etape"] as? [String] ?? [] 
+                let etapes = d["etape"] as? [String] ?? []
                 let intitule = d["intitule"] as? String ?? ""
                 let materielDress = d["materielDress"] as? String ?? ""
                 let materielSpes = d["materielSpes"] as? String ?? ""
@@ -112,6 +114,26 @@ class FichesVM : ObservableObject{
                 }
             }
         }
+    func getAllFicheCat(){
+        
+        let db = Firestore.firestore()
+        db.collection("CategorieFiche").addSnapshotListener { (querySnapshot, error) in
+                    guard let documents = querySnapshot?.documents else {
+                        print("No documents")
+                        return
+                    }
+            self.categories = documents.map {(queryDocumentSnapshot) -> CategorieFiche in
+                    //print("\(document.documentID) => \(document.data())")
+                    let d = queryDocumentSnapshot.data()
+                let type = d["type"] as? String ?? ""
+                return  CategorieFiche(type : type)
+                
+                    
+                    
+                }
+            }
+        
+    }
    
     
     

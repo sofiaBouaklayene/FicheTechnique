@@ -14,6 +14,8 @@ import Firebase
 class IngrsVM : ObservableObject, Subscriber{
     @Published var ingredients = [Ingredient]()
     @Published var categories = [CatIngr]()
+    @Published var unites = [Unite]()
+    @Published var catAllergene = [CatAllaergene]()
     //@Published var liveIngrs = [Ingredient]()
     //@Published var ingredient: Ingredient
     //@Published var cancellables = Set<AnyCancellable>()
@@ -22,6 +24,8 @@ class IngrsVM : ObservableObject, Subscriber{
     init(){
         getAllCategorys()
         getAllIngredients()
+        getAllUnites()
+        getAllCatAllergene()
         
     
     }
@@ -164,6 +168,46 @@ class IngrsVM : ObservableObject, Subscriber{
             }
         
     }
+    func getAllUnites(){
+        let db = Firestore.firestore()
+        db.collection("Unite").addSnapshotListener { (querySnapshot, error) in
+                    guard let documents = querySnapshot?.documents else {
+                        print("No documents")
+                        return
+                    }
+            self.unites = documents.map {(queryDocumentSnapshot) -> Unite in
+                    print("\(queryDocumentSnapshot.documentID) => \(queryDocumentSnapshot.data())")
+                    let d = queryDocumentSnapshot.data()
+                    let type = d["type"] as? String ?? ""
+                    //listeIng.append(Ingredient( nom: nom, categorie: "fruit", PU: 1, unite: "kg", qtteStock: 5, allergene: true, CatAllergene: "crustace"))
+                return Unite(type: type)
+                    
+                    
+                }
+            }
+        
+    }
+    
+    func getAllCatAllergene(){
+        let db = Firestore.firestore()
+        db.collection("CategorieAllergene").addSnapshotListener { (querySnapshot, error) in
+                    guard let documents = querySnapshot?.documents else {
+                        print("No documents")
+                        return
+                    }
+            self.catAllergene = documents.map {(queryDocumentSnapshot) -> CatAllaergene in
+                    print("\(queryDocumentSnapshot.documentID) => \(queryDocumentSnapshot.data())")
+                    let d = queryDocumentSnapshot.data()
+                    let type = d["type"] as? String ?? ""
+                    //listeIng.append(Ingredient( nom: nom, categorie: "fruit", PU: 1, unite: "kg", qtteStock: 5, allergene: true, CatAllergene: "crustace"))
+                return CatAllaergene(type: type)
+                    
+                    
+                }
+            }
+        
+    }
+    
     
     func deleteData(toDoDeleteIngr : Ingredient){
         let db = Firestore.firestore()

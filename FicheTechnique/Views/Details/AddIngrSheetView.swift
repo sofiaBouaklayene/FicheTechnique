@@ -37,8 +37,6 @@ struct AddIngrSheetView: View{
     @State private var checked = true
   
     
-    @State private var selectedUnite: UniteIngr = UniteIngr.kg
-    
     @ObservedObject var ingrsVM : IngrsVM
     //@ObservedObject var vmIngredient = IngredientViewModel
     @State  private var selectedCategory: String = "coucouu"
@@ -46,8 +44,7 @@ struct AddIngrSheetView: View{
     //@ObservedObject var testVM : TestViewModel
     
     @State var prixUnitaire : Int = 0
-    var colors = ["Red", "Green", "Blue", "Tartan"]
-        @State private var selectedColor = "Red"
+    
     
     
     var body: some View{
@@ -61,7 +58,7 @@ struct AddIngrSheetView: View{
                     
                     Text("Catégorie").padding()
                     Picker("Catégorie", selection: $ingredViewModel.categorie){
-                        Text("")
+                        //Text("")
                         ForEach(ingrsVM.categories, id: \.self){
                             categorieIngr in Text(categorieIngr.type).tag(categorieIngr.type)
                         }.padding(5)
@@ -70,11 +67,6 @@ struct AddIngrSheetView: View{
                        
                     }
                     .pickerStyle(.menu)
-                    Text("you selected \(ingredViewModel.categorie)")
-                
-                   
-                    
-                    
                     
                     
                 }
@@ -86,15 +78,17 @@ struct AddIngrSheetView: View{
                     TextField("Quantite", value: $ingredViewModel.qtteStock, formatter: formatter).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5)
                     Text("Unité").padding()
                     Picker("Catégorie", selection: $ingredViewModel.unite){
-                        ForEach(UniteIngr.allCases, id: \.self){
-                            uniteIngr in Text(uniteIngr.rawValue).tag(uniteIngr)
+                        ForEach(ingrsVM.unites, id: \.self){
+                            uniteIngr in Text(uniteIngr.type).tag(uniteIngr.type)
                         }.padding(5)
                     }
                     .pickerStyle(.menu)
-                    HStack {
-                        Text("Allergène").padding()
-                        CheckBoxView(checked: $checked).padding()
-                        Spacer()
+                    Text("Allergène")
+                    Picker("Allergene", selection: $ingredViewModel.CatAllergene){
+                        Text("Ce n'est pas un allergene")
+                        ForEach(ingrsVM.catAllergene, id: \.self){
+                            catAll in Text(catAll.type).tag(catAll.type)
+                        }.padding(5)
                     }
                 }
                 Button(action :{
@@ -124,9 +118,11 @@ struct AddIngrSheetView_Previews: PreviewProvider {
     }
 }
 */
+/*
 extension AddIngrSheetView{
     private func saveIngredient(){
         let ingred = Ingredient(nom: nom, categorie: selectedCategory, PU: PU, unite: selectedUnite.rawValue, qtteStock: qtteStock, allergene: allergene, CatAllergene: CatAllergene)
         ingrsVM.addIngredient(ingredient: ingred)
     }
 }
+*/

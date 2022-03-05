@@ -56,6 +56,16 @@ struct FicheUIView: View{
             }.font(.footnote)
                 .foregroundColor(Color.gray)
             
+            VStack{
+                Text("Matériel de dréssage")
+                Text(" \(fiche.materielSpes)").bold()
+                    .padding(10).font(.system(.title, design : .serif))
+                Text("Matériel specifique")
+                Text(" \(fiche.materielDress)").bold()
+                    .padding(10).font(.system(.title, design : .serif))
+            
+            }
+            
             /*VStack{
                 Text("Technique de réalisation").italic() .padding(10).font(.system(.title, design : .serif))
                 

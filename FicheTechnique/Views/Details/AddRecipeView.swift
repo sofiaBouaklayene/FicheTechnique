@@ -44,9 +44,9 @@ struct AddRecipeView: View{
                     TextField("Nom de la fiche", text: $ficheViewModel.intitule )
                 }
                 Section(header: Text("Categorie")){
-                    Picker("Catégorie", selection: $selectedCategory){
-                        ForEach(Categorie.allCases, id: \.self){
-                            categorie in Text(categorie.rawValue).tag(categorie)
+                    Picker("Catégorie", selection: $ficheViewModel.categorie){
+                        ForEach(fichesVM.categories, id: \.self){
+                            categorie in Text(categorie.type).tag(categorie.type)
                         }
                     }
                     .pickerStyle(.menu)
