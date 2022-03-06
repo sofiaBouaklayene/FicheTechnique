@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct CostCalculationView: View{
-    /*@Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss
     @State private var coutPersonnel: Int = 0
     @State private var coutFluide: Int = 0
     @State private var coeffMultiplicateur: Int = 0
@@ -20,27 +20,32 @@ struct CostCalculationView: View{
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         return formatter
-    }()*/
+    }()
+    let col = [GridItem](repeating: .init(.flexible()), count: 2)
 
     var body: some View{
         NavigationView{
-            /*Form{
-                VStack{
-                    Text("Vos couts par défaut")
-                    Section(header: Text("Cout personnel:")){
+            VStack{
+            Text("Vos couts par défaut").bold().padding()
+            LazyVGrid (columns: col, alignment: .leading){
+                
+                
+                  
+                Text("Cout personnel:").padding(5)
                         TextField("Nom de la fiche", value: $coutPersonnel, formatter : formatter )
-                    }
-                    Section(header: Text("Cout Fluide:")){
+                    
+                Text("Cout Fluide:").padding(5)
                         TextField("Cout fluide", value: $coutFluide, formatter : formatter)
                         
-                    }
-                    Section(header: Text("Coefficient multiplicateur:")){
+                    
+                Text("Coefficient multiplicateur:").padding(5)
                         TextField("Coefficient", value: $coeffMultiplicateur, formatter : formatter )
-                    }
-                    Section(header: Text("Cout assaisonnement:")){
+                    
+                Text("Cout assaisonnement:").padding(5)
                         TextField("Cout assaisonnement:", value: $coutAssaisonnement, formatter : formatter)
-                    }
-                    VStack{
+                    
+                }
+                    /*VStack{
                         Text("Insérez vos couts")
                         Section(header: Text("Cout personnel:")){
                             TextField("Nom de la fiche", value: $coutPersonnel, formatter : formatter )
@@ -56,7 +61,7 @@ struct CostCalculationView: View{
                             TextField("Cout assaisonnement:", value: $coutAssaisonnement, formatter : formatter)
                         
                     }
-                }
+                }*/
             }.toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading){
                     Button{
@@ -70,9 +75,9 @@ struct CostCalculationView: View{
                 
                 
             })
-            .navigationTitle("Créer votre fiche")
+            .navigationTitle("Calculer vos couts")
                 .navigationBarTitleDisplayMode(.inline)
-            }*/
+            
             
         }.navigationViewStyle(.stack)
     }
