@@ -20,7 +20,7 @@ class EtapeViewModel : ObservableObject {
     
     @Published var titreEtape: String
     @Published var NomDenree: String
-    @Published var Ingredients: String
+    @Published var Ingredients: [String]
     @Published var description: String
     @Published var temps: Int
     

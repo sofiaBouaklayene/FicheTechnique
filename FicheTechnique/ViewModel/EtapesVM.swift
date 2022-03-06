@@ -33,7 +33,7 @@ class EtapesVM : ObservableObject{
                 let idEtape = queryDocumentSnapshot.documentID
                 let titreEtape = d["titreEtape"] as? String ?? ""
                 let NomDenree = d["NomDenree"] as? String ?? ""
-                let Ingredients = d["Ingredients"] as? String ?? ""
+                let Ingredients = d["Ingredients"] as? [String] ?? [""]
                 //let etapes = d["etape"] as? [Etape]
                 let description = d["description"] as? String ?? ""
                 let temps = d["temps"] as? Int ?? 0

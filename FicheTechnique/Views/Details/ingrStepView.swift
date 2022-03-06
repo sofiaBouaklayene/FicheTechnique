@@ -42,7 +42,7 @@ struct ingrStepView: View{
     //pour le moment on fait ca
     @State var quantite : Int = 0
     @State var ingreEtape : ModelIngredFiche = ModelIngredFiche(nomingredient: "", quantite: 0)
-    @StateObject var etapeViewModel : EtapeViewModel = EtapeViewModel(etape: Etape(titreEtape: "", NomDenree: "", Ingredients: "", description: "", temps: 0))
+    @StateObject var etapeViewModel : EtapeViewModel = EtapeViewModel(etape: Etape(titreEtape: "", NomDenree: "", Ingredients: [""], description: "", temps: 0))
     @StateObject var ficheViewModel = FicheViewModel(fiche: Fiche(intitule: "", responsable: "", nbCouverts: 0, categorie: "", etapes: [], materielSpes: "", materielDress: ""))
     
     
@@ -54,7 +54,7 @@ struct ingrStepView: View{
                     
                     Text("Ingredient").padding()
                     
-                    Picker("Ingredient", selection: $etapeViewModel.Ingredients){
+                    Picker("Ingredient", selection: $selectedIngredient){
                         ForEach(ingrsVM.ingredients, id: \.id){
                             ingred in Text(ingred.nom).tag(ingred.nom)
                         }.padding(5)
@@ -68,7 +68,7 @@ struct ingrStepView: View{
                         .toolbar {
                             ToolbarItem(placement: .bottomBar) {
                                 Button("Add") {
-                                    etapeViewModel.Ingredients
+                                    etapeViewModel.Ingredients.append(selectedIngredient)
                                     print("Pressed")
                                     
                                 }

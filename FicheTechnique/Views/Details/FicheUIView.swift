@@ -70,13 +70,13 @@ struct FicheUIView: View{
                     Text(etape.titreEtape).bold()
                     Text(etape.description)
                     Text("Ingrédients").bold().padding()
-                    Text(etape.Ingredients)
-                    /*ForEach(etape.Ingredients, id: \.id){ ingred in VStack{
-                        Text(ingred.Ingredients)
+                    //Text(etape.Ingredients)
+                    ForEach(etape.Ingredients, id: \.self){ ingred in VStack{
+                        Text(ingred)
                         
                     }
                     
-                }*/
+                }
                     
                 }
                     

@@ -17,7 +17,7 @@ struct AddRecipeView: View{
     
     @State private var showingAddStep = false
     
-    @State private var etape: Etape = Etape(titreEtape: "", NomDenree: "", Ingredients: "", description: "", temps: 0)
+    @State private var etape: Etape = Etape(titreEtape: "", NomDenree: "", Ingredients: [""], description: "", temps: 0)
     
     
     @ObservedObject var fichesVM : FichesVM

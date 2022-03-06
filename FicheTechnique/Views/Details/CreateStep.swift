@@ -35,14 +35,14 @@ struct CreateStep: View{
     @ObservedObject var etapeVM : EtapesVM
     @State var showingstepsIngr : Bool = false
     
-    @StateObject var etapeViewModel = EtapeViewModel(etape: Etape(titreEtape: "", NomDenree: "", Ingredients: "", description: "", temps: 0))
+    @StateObject var etapeViewModel = EtapeViewModel(etape: Etape(titreEtape: "", NomDenree: "", Ingredients: [""], description: "", temps: 0))
     @ObservedObject var ficheViewModel : FicheViewModel
     
     
     //test
-    @ObservedObject var etape : Etape = Etape(titreEtape: "", NomDenree: "", Ingredients: "", description: "", temps: 0)
+    @ObservedObject var etape : Etape = Etape(titreEtape: "", NomDenree: "", Ingredients: [""], description: "", temps: 0)
     
-    @State var listEtape = Etape(titreEtape: "", NomDenree: "", Ingredients: "", description: "", temps: 0)
+    @State var listEtape = Etape(titreEtape: "", NomDenree: "", Ingredients: [""], description: "", temps: 0)
     
     
     

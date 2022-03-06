@@ -22,11 +22,11 @@ class Etape: Identifiable,  ObservableObject{
     var id = UUID()
     var titreEtape: String
     var NomDenree: String
-    var Ingredients: String
+    var Ingredients: [String]
     var description: String
     var temps: Int
     
-    init(titreEtape: String, NomDenree:String, Ingredients: String, description: String, temps: Int) {
+    init(titreEtape: String, NomDenree:String, Ingredients: [String], description: String, temps: Int) {
         self.titreEtape = titreEtape
         self.NomDenree = NomDenree
         self.Ingredients = Ingredients
@@ -36,7 +36,7 @@ class Etape: Identifiable,  ObservableObject{
        
     }
     
-    init(titreEtape: String, NomDenree:String, Ingredients: String, description: String, temps: Int ,inputidStr: String){
+    init(titreEtape: String, NomDenree:String, Ingredients: [String], description: String, temps: Int ,inputidStr: String){
         
         self.titreEtape = titreEtape
         self.NomDenree = NomDenree
