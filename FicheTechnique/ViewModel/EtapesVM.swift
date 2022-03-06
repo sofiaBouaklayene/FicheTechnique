@@ -61,6 +61,10 @@ class EtapesVM : ObservableObject{
         }
         return resultat
         }
+    
+    func deleteEtape(indexSet: IndexSet){
+        etapes.remove(atOffsets: indexSet)
+    }
    
     
    

@@ -29,14 +29,15 @@ struct StockView: View{
                                    
                                     }
                     
-                                .onDelete(perform : {
+                                /*.onDelete(perform : {
                                     indexSet in
                                     let ingredID = indexSet.map{
                                         ingrsVM.ingredients[$0].id
                                     }
                                     self.ingrsVM.deleteIngred(with: ingredID[0])
                                     
-                                })
+                                })*/
+                                .onDelete(perform : ingrsVM.deleteIngredient)
                                         .onMove(perform : ingrsVM.moveIngr)
                             
                                 

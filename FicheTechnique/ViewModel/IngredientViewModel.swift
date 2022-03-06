@@ -90,6 +90,8 @@ class IngredientViewModel : ObservableObject, IngredientObserver, Subscriber {
               print(error)
             }
     }
+   
+        
     
     func save() {
         addIngredient()

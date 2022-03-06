@@ -225,6 +225,9 @@ class IngrsVM : ObservableObject, Subscriber{
             }
         }
     }
+    func deleteIngredient(indexSet: IndexSet){
+        ingredients.remove(atOffsets: indexSet)
+    }
     func deleteIngred(with id: String){
         let db = Firestore.firestore()
         /*db.collection("ingredients").whereField("id", isEqualTo: id).getDocuments{(snap, err) in
