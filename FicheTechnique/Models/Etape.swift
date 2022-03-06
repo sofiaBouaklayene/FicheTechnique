@@ -23,24 +23,28 @@ class Etape: Identifiable,  ObservableObject{
     var titreEtape: String
     var NomDenree: String
     var Ingredients: [String]
+    //test
+    var quantite: [Int]
     var description: String
     var temps: Int
     
-    init(titreEtape: String, NomDenree:String, Ingredients: [String], description: String, temps: Int) {
+    init(titreEtape: String, NomDenree:String, Ingredients: [String], quantite: [Int], description: String, temps: Int) {
         self.titreEtape = titreEtape
         self.NomDenree = NomDenree
         self.Ingredients = Ingredients
+        self.quantite = quantite
         self.description = description
         self.temps = temps
         
        
     }
     
-    init(titreEtape: String, NomDenree:String, Ingredients: [String], description: String, temps: Int ,inputidStr: String){
+    init(titreEtape: String, NomDenree:String, Ingredients: [String],quantite: [Int], description: String, temps: Int ,inputidStr: String){
         
         self.titreEtape = titreEtape
         self.NomDenree = NomDenree
         self.Ingredients = Ingredients
+        self.quantite = quantite
         self.description = description
         self.temps = temps
         let temp = UUID(uuidString : inputidStr)

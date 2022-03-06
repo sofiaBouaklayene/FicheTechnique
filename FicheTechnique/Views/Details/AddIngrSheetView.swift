@@ -77,7 +77,7 @@ struct AddIngrSheetView: View{
                     Text("Quantité").padding()
                     TextField("Quantite", value: $ingredViewModel.qtteStock, formatter: formatter).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5)
                     Text("Unité").padding()
-                    Picker("Catégorie", selection: $ingredViewModel.unite){
+                    Picker("Unite", selection: $ingredViewModel.unite){
                         ForEach(ingrsVM.unites, id: \.self){
                             uniteIngr in Text(uniteIngr.type).tag(uniteIngr.type)
                         }.padding(5)

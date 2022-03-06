@@ -21,6 +21,7 @@ class EtapeViewModel : ObservableObject {
     @Published var titreEtape: String
     @Published var NomDenree: String
     @Published var Ingredients: [String]
+    @Published var quantite : [Int]
     @Published var description: String
     @Published var temps: Int
     
@@ -33,6 +34,7 @@ class EtapeViewModel : ObservableObject {
         self.titreEtape = etape.titreEtape
         self.NomDenree = etape.NomDenree
         self.Ingredients = etape.Ingredients
+        self.quantite = etape.quantite
         self.description = etape.description
         self.temps = etape.temps
        
@@ -43,10 +45,10 @@ class EtapeViewModel : ObservableObject {
     
     func addEtape(){
         let db = Firestore.firestore()
-        let etape : Etape = Etape(titreEtape: titreEtape, NomDenree: NomDenree, Ingredients: Ingredients, description: description, temps: temps)
+        let etape : Etape = Etape(titreEtape: titreEtape, NomDenree: NomDenree, Ingredients: Ingredients, quantite : quantite, description: description, temps: temps)
         
         do {
-            let _ = try db.collection("Etape").document(etape.id.uuidString ).setData(["titreEtape" : titreEtape, "NomDenree" : NomDenree, "Ingredients": Ingredients  ,"description" : description, "temps": temps ])
+            let _ = try db.collection("Etape").document(etape.id.uuidString ).setData(["titreEtape" : titreEtape, "NomDenree" : NomDenree, "Ingredients": Ingredients  , "quantite" : quantite, "description" : description, "temps": temps ])
             
             }
             catch {

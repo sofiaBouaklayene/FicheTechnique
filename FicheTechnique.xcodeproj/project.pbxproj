@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6FAE55CA27D54155008A513D /* IngrFicheVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE55C927D54155008A513D /* IngrFicheVM.swift */; };
 		6FBD2BBE27BECADA006EF045 /* FicheTechniqueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD2BBD27BECADA006EF045 /* FicheTechniqueApp.swift */; };
 		6FBD2BC027BECADA006EF045 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD2BBF27BECADA006EF045 /* ContentView.swift */; };
 		6FBD2BC227BECADB006EF045 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FBD2BC127BECADB006EF045 /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6FAE55C927D54155008A513D /* IngrFicheVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngrFicheVM.swift; sourceTree = "<group>"; };
 		6FBD2BBA27BECADA006EF045 /* FicheTechnique.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FicheTechnique.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FBD2BBD27BECADA006EF045 /* FicheTechniqueApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FicheTechniqueApp.swift; sourceTree = "<group>"; };
 		6FBD2BBF27BECADA006EF045 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				6FBD2C1C27C4C78F006EF045 /* IngrsVM.swift */,
+				6FAE55C927D54155008A513D /* IngrFicheVM.swift */,
 				6FCEEDB727D132460042C14D /* FicheViewModel.swift */,
 				6FCEEDBB27D2041C0042C14D /* EtapeViewModel.swift */,
 				6FCEEDB527D0D5E80042C14D /* EtapesVM.swift */,
@@ -369,6 +372,7 @@
 				6FCEEDC427D3C0F70042C14D /* DetailSteps.swift in Sources */,
 				6FCEEDB627D0D5E80042C14D /* EtapesVM.swift in Sources */,
 				6FCEEDBA27D1F28A0042C14D /* ingrStepView.swift in Sources */,
+				6FAE55CA27D54155008A513D /* IngrFicheVM.swift in Sources */,
 				6FBD2BD827BEFA29006EF045 /* SignInViewModel.swift in Sources */,
 				6FBD2BFD27C11EBB006EF045 /* TabBar.swift in Sources */,
 				6FBD2C1827C24502006EF045 /* ModifyIngrSheetView.swift in Sources */,

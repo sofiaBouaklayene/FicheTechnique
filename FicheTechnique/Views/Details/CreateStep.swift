@@ -35,14 +35,14 @@ struct CreateStep: View{
     @ObservedObject var etapeVM : EtapesVM
     @State var showingstepsIngr : Bool = false
     
-    @StateObject var etapeViewModel = EtapeViewModel(etape: Etape(titreEtape: "", NomDenree: "", Ingredients: [""], description: "", temps: 0))
+    @StateObject var etapeViewModel = EtapeViewModel(etape: Etape(titreEtape: "", NomDenree: "", Ingredients: [""], quantite:[], description: "", temps: 0))
     @ObservedObject var ficheViewModel : FicheViewModel
     
     
     //test
-    @ObservedObject var etape : Etape = Etape(titreEtape: "", NomDenree: "", Ingredients: [""], description: "", temps: 0)
+    @ObservedObject var etape : Etape = Etape(titreEtape: "", NomDenree: "", Ingredients: [""],quantite:[], description: "", temps: 0)
     
-    @State var listEtape = Etape(titreEtape: "", NomDenree: "", Ingredients: [""], description: "", temps: 0)
+    @State var listEtape = Etape(titreEtape: "", NomDenree: "", Ingredients: [""],quantite: [] ,description: "", temps: 0)
     
     
     
@@ -57,9 +57,9 @@ struct CreateStep: View{
        
         LazyVGrid (columns: col, alignment: .leading){
             Text("Desciption").padding()
-            TextField("description", text: $etapeViewModel.description)
+            TextEditor(text: $etapeViewModel.description)
             Text("temps").padding()
-            TextField("Temps", value: $etapeViewModel.temps, formatter: formatter).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5)
+            TextField("Temps en min", value: $etapeViewModel.temps, formatter: formatter).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5)
           
             LazyVGrid (columns: col, alignment: .center){
                 Text("Ingredient").padding(10)

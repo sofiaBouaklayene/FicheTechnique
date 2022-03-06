@@ -34,13 +34,14 @@ class EtapesVM : ObservableObject{
                 let titreEtape = d["titreEtape"] as? String ?? ""
                 let NomDenree = d["NomDenree"] as? String ?? ""
                 let Ingredients = d["Ingredients"] as? [String] ?? [""]
+                let quantite = d["quantite"] as? [Int] ?? []
                 //let etapes = d["etape"] as? [Etape]
                 let description = d["description"] as? String ?? ""
                 let temps = d["temps"] as? Int ?? 0
                 print(Ingredients)
                     //listeIng.append(Ingredient( nom: nom, categorie: "fruit", PU: 1, unite: "kg", qtteStock: 5, allergene: true, CatAllergene: "crustace"))
                 //print("l'id est " + idEtape)
-                return Etape(titreEtape: titreEtape, NomDenree: NomDenree, Ingredients: Ingredients, description: description, temps: temps, inputidStr: idEtape)
+                return Etape(titreEtape: titreEtape, NomDenree: NomDenree, Ingredients: Ingredients, quantite: quantite, description: description, temps: temps, inputidStr: idEtape)
                 
                     
                     

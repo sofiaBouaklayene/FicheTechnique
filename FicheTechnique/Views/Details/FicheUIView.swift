@@ -69,14 +69,35 @@ struct FicheUIView: View{
                 //getdocument() je recupere le document ici
                     Text(etape.titreEtape).bold()
                     Text(etape.description)
+                    Text("Durée").bold().padding()
+                    Text("La durée est de\(etape.temps) min")
+                   
+                   
                     Text("Ingrédients").bold().padding()
                     //Text(etape.Ingredients)
                     ForEach(etape.Ingredients, id: \.self){ ingred in VStack{
                         Text(ingred)
+                
+                    
                         
                     }
                     
                 }
+                    Text("Les quantités").bold().padding()
+                    ForEach(etape.quantite, id: \.self){ quantite in VStack{
+                        Text("la quantite est \(quantite)")
+                    
+                        
+                        }
+                    }
+                    
+                    
+                   
+                    
+                    
+                    
+                    
+                    
                     
                 }
                     
