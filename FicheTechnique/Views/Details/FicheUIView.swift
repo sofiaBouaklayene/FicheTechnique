@@ -63,19 +63,16 @@ struct FicheUIView: View{
             
             VStack{
                 Text("Technique de réalisation").italic() .padding(10).font(.system(.title, design : .serif))
-                Text("Les étapes")
-                
                 //Text(fiche.etapes[0])
                 ForEach(etapesVM.getetapes(etapesIn: fiche.etapes), id:\.id){ etape in VStack{
                     Text("Etape").bold().padding()
                 //getdocument() je recupere le document ici
-                    Text(etape.titreEtape)
-                    //Text(etape.temps)
+                    Text(etape.titreEtape).bold()
                     Text(etape.description)
                     Text("Ingrédients").bold().padding()
+                    Text(etape.Ingredients)
                     /*ForEach(etape.Ingredients, id: \.id){ ingred in VStack{
-                        Text(ingred.nomingredient)
-                        Text(ingred.quantite)
+                        Text(ingred.Ingredients)
                         
                     }
                     
@@ -86,12 +83,12 @@ struct FicheUIView: View{
             }
             }
             VStack{
-                Text("Matériel de dréssage")
-                Text(" \(fiche.materielSpes)").bold()
+                Text("Matériel de dréssage").bold()
                     .padding(10).font(.system(.title, design : .serif))
-                Text("Matériel specifique")
-                Text(" \(fiche.materielDress)").bold()
+                Text(" \(fiche.materielSpes)")
+                Text("Matériel specifique").bold()
                     .padding(10).font(.system(.title, design : .serif))
+                Text(" \(fiche.materielDress)")
             
             }
             VStack{

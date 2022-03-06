@@ -11,8 +11,6 @@ struct HomeView: View{
     //var image: String
     @ObservedObject var fichesVM : FichesVM
     @ObservedObject var etapesVM : EtapesVM
-  
-    //@ObservedObject var fiche : Fiche
     @State private var search : String = ""
     
     

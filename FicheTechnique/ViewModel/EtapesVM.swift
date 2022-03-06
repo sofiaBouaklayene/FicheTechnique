@@ -33,10 +33,11 @@ class EtapesVM : ObservableObject{
                 let idEtape = queryDocumentSnapshot.documentID
                 let titreEtape = d["titreEtape"] as? String ?? ""
                 let NomDenree = d["NomDenree"] as? String ?? ""
-                let Ingredients = d["Ingredients"] as? [(String, Int)] ?? [("", 0)]
+                let Ingredients = d["Ingredients"] as? String ?? ""
                 //let etapes = d["etape"] as? [Etape]
                 let description = d["description"] as? String ?? ""
                 let temps = d["temps"] as? Int ?? 0
+                print(Ingredients)
                     //listeIng.append(Ingredient( nom: nom, categorie: "fruit", PU: 1, unite: "kg", qtteStock: 5, allergene: true, CatAllergene: "crustace"))
                 //print("l'id est " + idEtape)
                 return Etape(titreEtape: titreEtape, NomDenree: NomDenree, Ingredients: Ingredients, description: description, temps: temps, inputidStr: idEtape)

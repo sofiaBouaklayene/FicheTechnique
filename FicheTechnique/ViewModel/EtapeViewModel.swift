@@ -20,7 +20,7 @@ class EtapeViewModel : ObservableObject {
     
     @Published var titreEtape: String
     @Published var NomDenree: String
-    @Published var Ingredients: [(nom: String, quantite: Int)]
+    @Published var Ingredients: String
     @Published var description: String
     @Published var temps: Int
     
@@ -46,7 +46,7 @@ class EtapeViewModel : ObservableObject {
         let etape : Etape = Etape(titreEtape: titreEtape, NomDenree: NomDenree, Ingredients: Ingredients, description: description, temps: temps)
         
         do {
-            let _ = try db.collection("Etape").document(etape.id.uuidString ).setData(["titreEtape" : titreEtape, "NomDenree" : NomDenree, "description" : description, "temps": temps ])
+            let _ = try db.collection("Etape").document(etape.id.uuidString ).setData(["titreEtape" : titreEtape, "NomDenree" : NomDenree, "Ingredients": Ingredients  ,"description" : description, "temps": temps ])
             
             }
             catch {

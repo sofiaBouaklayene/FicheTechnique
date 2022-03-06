@@ -42,6 +42,21 @@ class FichesVM : ObservableObject{
         fiches.append(fiche)
     }
     
+    func deleteFiche(with id: UUID){
+        let db = Firestore.firestore()
+        db.collection("Fiche").whereField("id", isEqualTo: id).getDocuments{(snap, err) in
+        if err != nil {
+            print("error")
+            return
+        }
+        for i in snap!.documents{
+            DispatchQueue.main.async{
+                i.reference.delete()
+            }
+        
+        }
+        }
+    }
     /*func fetchData(){
         let db = Firestore.firestore()
         db.collection("Fiche").addSnapshotListener{
@@ -163,3 +178,4 @@ class FichesVM : ObservableObject{
             }
     }*/
 }
+

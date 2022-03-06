@@ -12,7 +12,6 @@ struct TabBar: View{
     @ObservedObject var ingrsVM : IngrsVM
     @ObservedObject var fichesVM : FichesVM
     @ObservedObject var etapesVM : EtapesVM
-    //@ObservedObject var ingredient : Ingredient
     //@State var fiche : Fiche
    
     

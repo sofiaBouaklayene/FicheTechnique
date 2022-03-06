@@ -12,6 +12,8 @@ struct ContentView: View {
     @ObservedObject var ingrsVM : IngrsVM = IngrsVM()
     @ObservedObject var fichesVM : FichesVM = FichesVM()
     @ObservedObject var etapesVM : EtapesVM = EtapesVM()
+    @ObservedObject var fiche : Fiche = Fiche(intitule: "", responsable: "", nbCouverts: 0, categorie: "", etapes: [], materielSpes: "", materielDress: "")
+    
    
     
     

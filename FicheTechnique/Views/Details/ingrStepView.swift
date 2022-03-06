@@ -42,8 +42,8 @@ struct ingrStepView: View{
     //pour le moment on fait ca
     @State var quantite : Int = 0
     @State var ingreEtape : ModelIngredFiche = ModelIngredFiche(nomingredient: "", quantite: 0)
-    @StateObject var etapeVM : EtapeViewModel = EtapeViewModel(etape: Etape(titreEtape: "", NomDenree: "", Ingredients: [("",0)], description: "", temps: 0))
-    
+    @StateObject var etapeViewModel : EtapeViewModel = EtapeViewModel(etape: Etape(titreEtape: "", NomDenree: "", Ingredients: "", description: "", temps: 0))
+    @StateObject var ficheViewModel = FicheViewModel(fiche: Fiche(intitule: "", responsable: "", nbCouverts: 0, categorie: "", etapes: [], materielSpes: "", materielDress: ""))
     
     
     var body: some View{
@@ -54,23 +54,23 @@ struct ingrStepView: View{
                     
                     Text("Ingredient").padding()
                     
-                    Picker("Ingredient", selection: $etapeVM.Ingredients[0].0){
+                    Picker("Ingredient", selection: $etapeViewModel.Ingredients){
                         ForEach(ingrsVM.ingredients, id: \.id){
                             ingred in Text(ingred.nom).tag(ingred.nom)
                         }.padding(5)
                         
                        
                     }
-                    Text("You selected: \(etapeVM.Ingredients[0].0)")
                     Text("Quantité").padding()
-                    TextField("Quantite", value: self.$etapeVM.Ingredients[0].1, formatter: formatter).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5)
+                    //TextField("Quantite", value: self.$etapeVM.Ingredients[0].1, formatter: formatter).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5)
                     //Text("La quantité est \(etapeVM.Ingredients[0].1)")
                     Text("Ingrédients").font(.title)
                         .toolbar {
                             ToolbarItem(placement: .bottomBar) {
                                 Button("Add") {
-                                    etapeVM.Ingredients.append((etapeVM.Ingredients[0].0, etapeVM.Ingredients[0].1))
+                                    etapeViewModel.Ingredients
                                     print("Pressed")
+                                    
                                 }
                             }
                         }

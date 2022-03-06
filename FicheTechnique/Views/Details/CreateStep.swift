@@ -35,24 +35,24 @@ struct CreateStep: View{
     @ObservedObject var etapeVM : EtapesVM
     @State var showingstepsIngr : Bool = false
     
-    @StateObject var etapeViewModel = EtapeViewModel(etape: Etape(titreEtape: "", NomDenree: "", Ingredients: [("", 0)], description: "", temps: 0))
+    @StateObject var etapeViewModel = EtapeViewModel(etape: Etape(titreEtape: "", NomDenree: "", Ingredients: "", description: "", temps: 0))
     @ObservedObject var ficheViewModel : FicheViewModel
     
     
     //test
-    @ObservedObject var etape : Etape = Etape(titreEtape: "", NomDenree: "", Ingredients: [("", 0)], description: "", temps: 0)
+    @ObservedObject var etape : Etape = Etape(titreEtape: "", NomDenree: "", Ingredients: "", description: "", temps: 0)
     
-    @State var listEtape = Etape(titreEtape: "", NomDenree: "", Ingredients: [("", 0)], description: "", temps: 0)
+    @State var listEtape = Etape(titreEtape: "", NomDenree: "", Ingredients: "", description: "", temps: 0)
     
     
     
     
     
     var body: some View{
-        Text("Créez votre étape").bold()
+        Text("Créez vos étapes").bold()
         LazyVGrid(columns: col, alignment: .leading){
             Text("Nom de l'étape").padding()
-            TextField("nom de l'étape", text : $etapeViewModel.titreEtape).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5)
+            TextField("Nom de l'étape", text : $etapeViewModel.titreEtape).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5)
         }
        
         LazyVGrid (columns: col, alignment: .leading){
@@ -61,17 +61,18 @@ struct CreateStep: View{
             Text("temps").padding()
             TextField("Temps", value: $etapeViewModel.temps, formatter: formatter).textFieldStyle(RoundedBorderTextFieldStyle()).padding(5)
           
-            LazyVGrid (columns: col, alignment: .leading){
-                Text("Ingredient").padding(15)
-                Button(action :{
-            
-                    showingstepsIngr.toggle()
-                  
-                }, label:{
-                    Text("Add Ingredients").bold().frame(width: 150, height: 40, alignment: . center).background(Color.green.opacity(0.35)).cornerRadius(8).foregroundColor(Color.white).padding()
-                }).sheet(isPresented : $showingstepsIngr){
-                    ingrStepView(ingrsVM: ingrdVM)
+            LazyVGrid (columns: col, alignment: .center){
+                Text("Ingredient").padding(10)
+              
                 }
+            Button(action :{
+        
+                showingstepsIngr.toggle()
+              
+            }, label:{
+                Text("Ajouter un ingredient").bold().frame(width: 180, height: 40, alignment: . center).background(Color.green.opacity(0.35)).cornerRadius(8).foregroundColor(Color.white).padding()
+            }).sheet(isPresented : $showingstepsIngr){
+                ingrStepView(ingrsVM: ingrdVM, etapeViewModel: etapeViewModel, ficheViewModel : ficheViewModel)
                     
             
                 
@@ -101,7 +102,7 @@ struct CreateStep: View{
                 showingListeEtapes.toggle()
               
             }, label:{
-                Text("Ajouter des étapes existantes").bold().frame(width: 200, height: 40, alignment: . center).background(Color.orange.opacity(0.35)).cornerRadius(8).foregroundColor(Color.white).padding()
+                Text("Ajouter l'étape").bold().frame(width: 200, height: 40, alignment: . center).background(Color.orange.opacity(0.35)).cornerRadius(8).foregroundColor(Color.white).padding()
             }).sheet(isPresented : $showingListeEtapes){
                 ListSteps(etapeVM: etapeVM, ficheViewModel : ficheViewModel)
             }
@@ -114,8 +115,7 @@ struct CreateStep: View{
             }, label:{
                 Text("Valider etape").bold().frame(width: 200, height: 40, alignment: . center).background(Color.orange.opacity(0.35)).cornerRadius(8).foregroundColor(Color.white).padding()
             })
-            Text("Liste des ingrédients")
-            //Text("ingr:\(etape.Ingredients)")
+            
             
             
             
