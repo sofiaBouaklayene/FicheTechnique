@@ -20,7 +20,7 @@ struct TabBar: View{
     
     var body: some View{
         TabView{
-            HomeView(fichesVM : fichesVM).tabItem{
+            HomeView(fichesVM : fichesVM, etapesVM : etapesVM).tabItem{
                 Label("Accueil", systemImage: "house")
             
             }

@@ -12,11 +12,12 @@ struct ListFicheView: View{
     @ObservedObject var fichesVM : FichesVM
     @ObservedObject var fiche : Fiche
     @State private var search : String = ""
+    @ObservedObject var etapesVM : EtapesVM
     
     
     
     var body: some View{
-        NavigationLink(destination:FicheUIView(fichesVM: fichesVM, fiche: fiche)){
+        NavigationLink(destination:FicheUIView(fichesVM: fichesVM, fiche: fiche, etapesVM : etapesVM)){
         HStack(alignment: .center) {
                 VStack(alignment: .leading) {
                     Text(fiche.intitule)

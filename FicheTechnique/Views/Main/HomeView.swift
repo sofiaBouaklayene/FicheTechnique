@@ -10,6 +10,7 @@ import Foundation
 struct HomeView: View{
     //var image: String
     @ObservedObject var fichesVM : FichesVM
+    @ObservedObject var etapesVM : EtapesVM
   
     //@ObservedObject var fiche : Fiche
     @State private var search : String = ""
@@ -22,7 +23,7 @@ struct HomeView: View{
                 ForEach(search == "" ? fichesVM.fiches : fichesVM.fiches.filter{$0.responsable.contains(search) || $0.categorie.contains(search) || $0.intitule.contains(search)}, id:\.id){
                     fiche in
                     
-                    ListFicheView(fichesVM: fichesVM, fiche: fiche)
+                    ListFicheView(fichesVM: fichesVM, fiche: fiche, etapesVM: etapesVM)
                     
                     
                     

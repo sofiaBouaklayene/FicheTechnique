@@ -22,7 +22,7 @@ struct ListSteps: View{
              VStack{
                  NavigationView{List{
                      ForEach(search == "" ? etapeVM.etapes : etapeVM.etapes.filter{$0.titreEtape.contains(search)}, id:\.id){
-                                         etape in
+                                    etape in
                          
                          LazyVGrid(columns: col, alignment: .leading){
                              Text(etape.titreEtape).padding()

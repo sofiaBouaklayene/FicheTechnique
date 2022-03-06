@@ -8,11 +8,14 @@
 
 import SwiftUI
 import Foundation
+import Firebase
+import FirebaseFirestore
 
 struct FicheUIView: View{
     @ObservedObject var fichesVM : FichesVM
     @ObservedObject var fiche : Fiche
     //@ObservedObject var etape : Etape
+    @ObservedObject var etapesVM : EtapesVM
     
     //var fiche : Fiche
 
@@ -56,6 +59,32 @@ struct FicheUIView: View{
             }.font(.footnote)
                 .foregroundColor(Color.gray)
             
+           
+            
+            VStack{
+                Text("Technique de réalisation").italic() .padding(10).font(.system(.title, design : .serif))
+                Text("Les étapes")
+                
+                //Text(fiche.etapes[0])
+                ForEach(etapesVM.getetapes(etapesIn: fiche.etapes), id:\.id){ etape in VStack{
+                    Text("Etape").bold().padding()
+                //getdocument() je recupere le document ici
+                    Text(etape.titreEtape)
+                    //Text(etape.temps)
+                    Text(etape.description)
+                    Text("Ingrédients").bold().padding()
+                    /*ForEach(etape.Ingredients, id: \.id){ ingred in VStack{
+                        Text(ingred.nomingredient)
+                        Text(ingred.quantite)
+                        
+                    }
+                    
+                }*/
+                    
+                }
+                    
+            }
+            }
             VStack{
                 Text("Matériel de dréssage")
                 Text(" \(fiche.materielSpes)").bold()
@@ -65,27 +94,16 @@ struct FicheUIView: View{
                     .padding(10).font(.system(.title, design : .serif))
             
             }
+            VStack{
+                Button(action :{
             
-            /*VStack{
-                Text("Technique de réalisation").italic() .padding(10).font(.system(.title, design : .serif))
-                
-                ForEach(fiche.etapes, id:\.id){ etape in VStack{
-                    Text("Etape").bold().padding()
-                    Text(etape.titreEtape)
-                    //Text(etape.description)
-                    Text("Ingrédients").bold().padding()
-                    /*ForEach(etape.Ingredients, id: \.id){ ingred in VStack{
-                        Text(ingred.nomingredient)
-                        //Text(ingred.quantite)
-                        
-                    }
                     
-                }*/
-                    
-                }
-                    
+                    //etapeVM.etapes.append(etape)
+                  
+                }, label:{
+                    Text("Faire une vente").bold().frame(width: 200, height: 40, alignment: . center).background(Color.green.opacity(0.35)).cornerRadius(8).foregroundColor(Color.white).padding()
+                })
             }
-            }*/
         }
     }
 

@@ -103,7 +103,7 @@ struct CreateStep: View{
             }, label:{
                 Text("Ajouter des étapes existantes").bold().frame(width: 200, height: 40, alignment: . center).background(Color.orange.opacity(0.35)).cornerRadius(8).foregroundColor(Color.white).padding()
             }).sheet(isPresented : $showingListeEtapes){
-                ListSteps(etapeVM: etapeVM, ficheViewModel : ficheViewModel )
+                ListSteps(etapeVM: etapeVM, ficheViewModel : ficheViewModel)
             }
             
             Button(action :{

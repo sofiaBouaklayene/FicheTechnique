@@ -48,6 +48,8 @@ class FicheViewModel : ObservableObject {
         
         do {
             let _ = try db.collection("Fiche").document(fiche.id.uuidString ).setData(["intitule" : intitule, "responsable" : responsable, "nbCouverts" : nbCouverts,"categorie" : categorie, "etapes" : etapes, "materielSpes": materielSpes, "materielDress": materielDress ])
+            //let etape = db.collection("Etapr").document()
+        
             }
             catch {
               print(error)

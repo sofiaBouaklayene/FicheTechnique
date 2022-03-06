@@ -13,6 +13,7 @@ import FirebaseFirestore
 
 class EtapesVM : ObservableObject{
     @Published var etapes = [Etape]()
+    @Published var ficheEtape = [Etape]()
     init(){
     
         getAllEtapes()
@@ -29,6 +30,7 @@ class EtapesVM : ObservableObject{
             self.etapes = documents.map {(queryDocumentSnapshot) -> Etape in
                     //print("\(document.documentID) => \(document.data())")
                     let d = queryDocumentSnapshot.data()
+                let idEtape = queryDocumentSnapshot.documentID
                 let titreEtape = d["titreEtape"] as? String ?? ""
                 let NomDenree = d["NomDenree"] as? String ?? ""
                 let Ingredients = d["Ingredients"] as? [(String, Int)] ?? [("", 0)]
@@ -36,13 +38,29 @@ class EtapesVM : ObservableObject{
                 let description = d["description"] as? String ?? ""
                 let temps = d["temps"] as? Int ?? 0
                     //listeIng.append(Ingredient( nom: nom, categorie: "fruit", PU: 1, unite: "kg", qtteStock: 5, allergene: true, CatAllergene: "crustace"))
-                    return Etape(titreEtape: titreEtape, NomDenree: NomDenree, Ingredients: Ingredients, description: description, temps: temps)
+                //print("l'id est " + idEtape)
+                return Etape(titreEtape: titreEtape, NomDenree: NomDenree, Ingredients: Ingredients, description: description, temps: temps, inputidStr: idEtape)
                 
                     
                     
                 }
             }
         }
+    func getetapes( etapesIn : [String]) -> [Etape] {
+        var resultat : [Etape] = []
+        for etapeIn in etapesIn{
+            print("l'etape est :" + etapeIn)
+            for etape in self.etapes{
+                if etape.id.uuidString == etapeIn{
+                    
+                    resultat.append(etape)
+                }
+            }
+        }
+        return resultat
+        }
+   
+    
    
   
       

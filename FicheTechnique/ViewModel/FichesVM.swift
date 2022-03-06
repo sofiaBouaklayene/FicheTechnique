@@ -101,7 +101,7 @@ class FichesVM : ObservableObject{
                 let categorie = d["categorie"] as? String ?? ""
                 let responsable = d["responsable"] as? String ?? ""
                 let nbCouverts = d["nbCouverts"] as? Int ?? 0
-                let etapes = d["etape"] as? [String] ?? []
+                let etapes = d["etapes"] as? [String] ?? []
                 let intitule = d["intitule"] as? String ?? ""
                 let materielDress = d["materielDress"] as? String ?? ""
                 let materielSpes = d["materielSpes"] as? String ?? ""
@@ -114,6 +114,11 @@ class FichesVM : ObservableObject{
                 }
             }
         }
+    
+    
+  
+    
+    
     func getAllFicheCat(){
         
         let db = Firestore.firestore()

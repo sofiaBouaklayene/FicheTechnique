@@ -47,10 +47,12 @@ class EtapeViewModel : ObservableObject {
         
         do {
             let _ = try db.collection("Etape").document(etape.id.uuidString ).setData(["titreEtape" : titreEtape, "NomDenree" : NomDenree, "description" : description, "temps": temps ])
+            
             }
             catch {
               print(error)
             }
+        
     }
     
     
@@ -62,6 +64,7 @@ class EtapeViewModel : ObservableObject {
         self.save()
         
       }
+   
   
     /*
     func addEtapeToFiche(){

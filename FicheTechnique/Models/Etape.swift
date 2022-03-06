@@ -32,7 +32,22 @@ class Etape: Identifiable,  ObservableObject{
         self.Ingredients = Ingredients
         self.description = description
         self.temps = temps
+        
        
+    }
+    
+    init(titreEtape: String, NomDenree:String, Ingredients: [(String, Int)], description: String, temps: Int ,inputidStr: String){
+        
+        self.titreEtape = titreEtape
+        self.NomDenree = NomDenree
+        self.Ingredients = Ingredients
+        self.description = description
+        self.temps = temps
+        let temp = UUID(uuidString : inputidStr)
+        if (temp != nil){
+
+            self.id = temp!
+        }
     }
     
 }
